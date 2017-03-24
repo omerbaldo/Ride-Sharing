@@ -21,7 +21,7 @@
 	
 			<p>Don't have an account?</p>
 	
-			<form method="get" action="register.jsp" enctype=text/plain>
+			<form method="get" action="Registration.jsp" enctype=text/plain>
 			  <input type="submit" value="Register here" />
 			</form>
 		
