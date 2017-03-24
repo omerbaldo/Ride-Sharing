@@ -23,11 +23,12 @@ public class registrationClass
 			Statement stmt = con.createStatement();
 
 			//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-			String str = "INSERT INTO app ";
+			String str = "INSERT INTO app.User (typeofuser,username,password,email,address,phone_number,age) VALUES (1,\""+username+"\",\""+password+"\",\""+email+"\",\""+address+"\",\""+phone+"\",30)";
+			System.out.print(str);
 			//Run the query against the DB
-			ResultSet result = stmt.executeQuery(str);
+			int result = stmt.executeUpdate(str);
 			
-			
+		
 			return true;
 		}
 		

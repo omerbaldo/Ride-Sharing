@@ -19,9 +19,9 @@
 		boolean res = registrationClass.register(user,pass, email, phone, add);
 		
 		if (res)
-			out.print("<h1>Login Worked<h1>");
+			out.print("<h1>Register Worked<h1>");
 		else
-			out.print("<h1>Login Failed<h1>");
+			out.print("<h1>Register Failed<h1>");
 			
 	%>
 </body>
