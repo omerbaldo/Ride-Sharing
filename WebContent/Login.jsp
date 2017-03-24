@@ -9,7 +9,7 @@
 <body>
 
 <br>
-	<form method="post" action="LoginSucess.jsp">
+	<form method="post" action="LoginSuccess.jsp">
 		<table>
 			<tr>    
 				<td>Username</td><td><input type="text" name="Username"></td>
