@@ -9,11 +9,13 @@
   <button class="tablinks">User Profile</button>
   <button class="tablinks">Give a Ride</button>
   <button class="tablinks"  id="selected">Find a Ride</button>
+  <button class="tablinks" >Calendar</button>
   <button class="tablinks" style ="float: right;">Logout</button>
 </div>
 
 <link rel="stylesheet" type="text/css" href="user.css">
 <link rel="stylesheet" type="text/css" href="dropdown.css">
+<link rel="stylesheet" type="text/css" href="overflow.css">
 
 
 
@@ -24,9 +26,8 @@
 </head>
 <body>
 
-<h2>Hover to choose a: </h2>
+<h3>Step One: Fill Information</h3>
 
-<h3>Location</h3>
 <div class="dropdown">
   <button class="dropbtn">Pickup location </button>
   <div class="dropdown-content">
@@ -37,9 +38,8 @@
 </div>
 
 
-<h3>Destination</h3>
 <div class="dropdown">
-  <button class="dropbtn"></button>
+  <button class="dropbtn">Destination </button>
   <div class="dropdown-content">
     <a href="#">Livingston</a>
     <a href="#">College Ave</a>
@@ -48,6 +48,67 @@
 </div>
 
 
+<div class="dropdown">
+  <button class="dropbtn">Start Time </button>
+  <div class="dropdown-content">
+      <a href="#">6:00am</a>
+      <a href="#">7:00am</a>
+      <a href="#">8:00am</a>
+      <a href="#">9:00am</a>
+      <a href="#">10:00am</a>
+       <a href="#">3:00pm</a>
+  </div>
+</div>
+
+<div class="dropdown">
+  <button class="dropbtn">End Time </button>
+  <div class="dropdown-content">
+      <a href="#">6:00am</a>
+      <a href="#">7:00am</a>
+      <a href="#">8:00am</a>
+      <a href="#">9:00am</a>
+      <a href="#">10:00am</a>
+       <a href="#">3:00pm</a>
+  </div>
+</div>
+
+</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+
+
+
+
+
+<h3>Step Two: Find Rides </h3>
+
+<p>Pick up: Destination:  Starttime:    Endtime:  </p>
+
+<button> Search For The Ride ! </button>
+
+</br></br>
+
+<h4>Results: </h4>
+<div class="scroll">
+
+<table>
+  <tr>
+    <th>Origin</th>
+    <th>Destination</th>
+    <th>Host</th>
+    <th>Time</th>
+    <th>Select Ride</th>
+  </tr>
+  <tr>
+    <th>College Ave</th>
+    <th>Cook </th>
+    <th>Deep </th>
+    <th>9:00 Am </th>
+    <th><button> Select</button></th>
+  </tr>
+  
+</table>
+
+
+ </div>
 
 
 
