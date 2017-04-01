@@ -3,11 +3,19 @@
 <%@ page import="cs336Final.admin"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<link rel="stylesheet" type="text/css" href="admin.css">
 <html>
 <head>
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Manage Users</title>
 </head>
+<div class="tab">
+  <button class="tablinks">Dashboard</button>
+  <button class="tablinks">Ad Manager</button>
+  <button class="tablinks"  id="selected">User Manager</button>
+  <button class="tablinks" style ="float: right;">Logout</button>
+</div>
 <body>
 <h1> Active Users</h1>
 <table>
@@ -20,10 +28,10 @@ for ( int i =0; i < admin.getUserNames().size() ; i++)
 %>
 
 <tr>
-<td> <%=a.get(i)%></td>
-<td><%=b.get(i)%> </td>
-<td><button>Reset Password</button></td>
-<td><button>Lock</button></td>
+<td style="padding:0 15px 0 15px;"> <%=a.get(i)%></td>
+<td style="padding:0 15px 0 15px;"><%=b.get(i)%> </td>
+<td style="padding:0 15px 0 15px;"><button class="btn red" type="button"><span> Reset Password </span></button></td>
+<td style="padding:0 15px 0 15px;"><button class="btn red" type="button"><span> Lock </span></button></td>
 </tr>
 
 <%       

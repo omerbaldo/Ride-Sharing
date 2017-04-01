@@ -39,7 +39,8 @@ public class loginClass
 		
 	}
 	
-	private static int getRows(ResultSet res){
+	private static int getRows(ResultSet res)
+	{
 	    int totalRows = 0;
 	    try {
 	        res.last();
@@ -51,5 +52,26 @@ public class loginClass
 	    }
 	    return totalRows ;    
 	}
+	public static int userType (String username, String password)
+	{
+		try
+		{	String str = "SELECT typeofuser FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
+			//Run the query against the DB
+		
+			
+			ResultSet result = sql.query(str).get();
+			result.next();
+			return result.getInt(1);
+			
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+			return 3;
+		}
+		
+	}
+
 	
 }
