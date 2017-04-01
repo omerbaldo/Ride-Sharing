@@ -33,7 +33,7 @@
   		</div>
   		<div class="group">
     		<input type="text" name="Password"><span class="highlight"></span><span class="bar"></span>
-    		<label>Email</label>
+    		<label>Password</label>
   		</div>
   		<button type="submit" class="button buttonBlue">Login
     		<div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>

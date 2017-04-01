@@ -4,13 +4,13 @@ public class LoginObject
 {
 	private String username;
 	private String password;
-	private boolean isAdmin;
+	private int userType;
 	
-	public LoginObject(String username, String password, boolean isAdmin)
+	public LoginObject(String username, String password, int userType)
 	{
 		this.username = username;
 		this.password = password;
-		this.isAdmin = isAdmin;
+		this.userType = userType;
 	}
 	
 	public void setUsername(String username)
@@ -32,8 +32,8 @@ public class LoginObject
 		return this.password;
 	}
 	
-	public boolean getIsAdmin()
+	public int getUserType()
 	{
-		return this.isAdmin;
+		return this.userType;
 	}
 }

@@ -14,14 +14,14 @@
 		String pass = request.getParameter("Password");
 		
 		boolean res = loginClass.login(user, pass);
-		int t = loginClass.userType(user, pass);
 		
 		
 		if (res)
 		{
+			int t = loginClass.userType(user, pass);
 			if (t == 1)
 			{
-				LoginObject u = new LoginObject(user, pass, true);
+				LoginObject u = new LoginObject(user, pass, t);
 			
 				/*
 				request.setAttribute("user" , u );
@@ -37,7 +37,7 @@
 			else
 			{
 				
-				LoginObject u = new LoginObject(user, pass, false);
+				LoginObject u = new LoginObject(user, pass, t);
 				
 				/*
 				request.setAttribute("user" , u );

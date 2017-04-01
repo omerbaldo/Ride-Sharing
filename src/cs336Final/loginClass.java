@@ -1,7 +1,6 @@
 package cs336Final;
 
  
-import java.io.*;
 import java.util.*;
 import java.sql.*;
 //import javax.servlet.http.*;
@@ -38,6 +37,32 @@ public class loginClass
 		}
 		
 	}
+	public static LoginObject getUser(String username, String password)
+	{
+		LoginObject o = null;
+		try
+		{	String str = "SELECT * FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
+			//Run the query against the DB
+		
+			
+			ResultSet result = sql.query(str).get();
+			result.next();
+			
+			String n = result.getString(3);
+			String p = result.getString(4);
+			int t = result.getInt(2);
+			
+			return new LoginObject(n, p, t);
+			
+			
+		}
+		
+		catch (Exception e)
+		{
+			return o;
+		}
+		
+	}
 	
 	private static int getRows(ResultSet res)
 	{
@@ -55,10 +80,10 @@ public class loginClass
 	public static int userType (String username, String password)
 	{
 		try
-		{	String str = "SELECT typeofuser FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
+		{	
+			String str = "SELECT typeofuser FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
 			//Run the query against the DB
 		
-			
 			ResultSet result = sql.query(str).get();
 			result.next();
 			return result.getInt(1);
@@ -70,6 +95,32 @@ public class loginClass
 			System.out.println(e.toString());
 			return 3;
 		}
+		
+	}
+	
+	public static ArrayList<String> getUserNames() throws SQLException
+	{
+		ArrayList<String> o = new ArrayList<String>();
+		ResultSet r = sql.query("Select username from app.User").get();
+		
+		while (r.next())
+		{
+			o.add(r.getString(1));
+		}
+		return o;
+		
+		
+	}
+	public static ArrayList<String> getUserPasswords() throws SQLException
+	{
+		ArrayList<String> o = new ArrayList<String>();
+		ResultSet r = sql.query("Select password from app.User").get();
+		
+		while (r.next())
+		{
+			o.add(r.getString(1));
+		}
+		return o;
 		
 	}
 
