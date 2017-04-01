@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="cs336Final.admin"%>
+<%@ page import="cs336Final.LoginObject"%>
 <%@ page import="java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <link rel="stylesheet" type="text/css" href="admin.css">
@@ -22,6 +23,8 @@
 <%
 ArrayList<String> a = admin.getUserNames();
 ArrayList<String> b = admin.getUserPasswords();
+
+session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 
 for ( int i =0; i < admin.getUserNames().size() ; i++)
 {
