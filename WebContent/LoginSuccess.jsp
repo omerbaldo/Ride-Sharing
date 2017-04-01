@@ -44,7 +44,7 @@
 				request.getRequestDispatcher("/user_dashboard/userDashboard.jsp").forward(request, response);
 				*/
 				session.setAttribute("user", u);
-				response.sendRedirect(request.getContextPath() + "/user_dashboard/userDashboard.jsp");
+				response.sendRedirect(request.getContextPath() + "/user_dashboard/userProfile.jsp");
 			}
 			
 		}
