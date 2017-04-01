@@ -6,12 +6,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+
 <div class="tab">
   <form method ='post' action = "userProfile.jsp"><button class="tablinks">User Profile</button></form>
   <form method ='post' action = "userGiveRide.jsp">  <button class="tablinks">Give a Ride</button></form>
   <button class="tablinks"  id="selected">Find a Ride</button>
   <form method ='post' action = "userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
-  <button class="tablinks" style ="float: right;">Logout</button>
+  <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 
 <link rel="stylesheet" type="text/css" href="user.css">

@@ -12,8 +12,7 @@
   <form method ='post' action = "userGiveRide.jsp"><button class="tablinks">Give a Ride</button></form>
   <form method ='post' action = "userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
   <form method ='post' action = "userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
-  <button class="tablinks" style ="float: right;">Logout</button>
-  
+  <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 
 <link rel="stylesheet" type="text/css" href="user.css">
