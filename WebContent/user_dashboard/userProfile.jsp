@@ -9,7 +9,9 @@
 <div class="tab">
   <button class="tablinks" id="selected">User Profile</button>
   <button class="tablinks">Give a Ride</button>
-  <button class="tablinks">Take a Ride</button>
+  <button class="tablinks">Find a Ride</button>
+  <button class="tablinks" style ="float: right;">Logout</button>
+  
 </div>
 
 <link rel="stylesheet" type="text/css" href="user.css">
