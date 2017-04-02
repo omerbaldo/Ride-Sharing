@@ -16,7 +16,7 @@
   <form method ='post' action = "adminDashboard.jsp"><button class="tablinks">Dashboard</button></form>
   <button class="tablinks">Ad Manager</button>
   <button class="tablinks"  id="selected">User Manager</button>
-  <button class="tablinks" style ="float: right;">Logout</button>
+  <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <h1> Active Users</h1>
 <table>

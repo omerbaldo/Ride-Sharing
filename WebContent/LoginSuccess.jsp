@@ -15,13 +15,13 @@
 		
 		boolean res = loginClass.login(user, pass);
 		
+		LoginObject u = loginClass.getUser(user, pass);
 		
-		if (res)
+		if (res && u!= null)
 		{
-			int t = loginClass.userType(user, pass);
-			if (t == 1)
+			
+			if (u.getUserType() == 1)
 			{
-				LoginObject u = new LoginObject(user, pass, t);
 			
 				/*
 				request.setAttribute("user" , u );
@@ -36,9 +36,6 @@
 			}
 			else
 			{
-				
-				LoginObject u = new LoginObject(user, pass, t);
-				
 				/*
 				request.setAttribute("user" , u );
 				request.getRequestDispatcher("/user_dashboard/userDashboard.jsp").forward(request, response);

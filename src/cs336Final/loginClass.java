@@ -41,18 +41,21 @@ public class loginClass
 	{
 		LoginObject o = null;
 		try
-		{	String str = "SELECT * FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
-			//Run the query against the DB
-		
+		{	
+			String str = "SELECT * FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
 			
 			ResultSet result = sql.query(str).get();
 			result.next();
 			
+			int a = result.getInt(1);
+			int b = result.getInt(2);
 			String n = result.getString(3);
 			String p = result.getString(4);
-			int t = result.getInt(2);
 			
-			return new LoginObject(n, p, t);
+			String e = result.getString(5);
+			String add = result.getString(6);
+			
+			return new LoginObject(a, b , n , p , e , add);
 			
 			
 		}

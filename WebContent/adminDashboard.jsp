@@ -13,7 +13,7 @@
   <button class="tablinks" id = "selected">Dashboard</button>
   <button class="tablinks">Ad Manager</button>
   <form method ='post' action = "adminUserManager.jsp"> <button class="tablinks">User Manager</button></form>
-  <button class="tablinks" style ="float: right;">Logout</button>
+  <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <body>
 	<%
