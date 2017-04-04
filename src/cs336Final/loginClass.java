@@ -54,8 +54,10 @@ public class loginClass
 			
 			String e = result.getString(5);
 			String add = result.getString(6);
+			String phone = result.getString(7);
+			int age = result.getInt(8);
 			int x = result.getInt(9);
-			return new LoginObject(a, b , n , p , e , add, x);
+			return new LoginObject(a, b , n , p , e , add, phone, age, x);
 			
 			
 		}
