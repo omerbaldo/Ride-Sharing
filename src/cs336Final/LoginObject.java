@@ -22,7 +22,7 @@ public class LoginObject
 		this.password = password;
 		this.email = email;
 		this.address = address;
-		this.active = active;
+		this.setActive(active);
 	}
 	
 	public void setUsername(String username)
@@ -205,6 +205,14 @@ public class LoginObject
 	{
 		return false;
 		
+	}
+
+	public int getActive() {
+		return active;
+	}
+
+	public void setActive(int active) {
+		this.active = active;
 	}
 	 
 }
