@@ -35,11 +35,7 @@
     		<label>Username</label>
   		</div>
   		<div class="group">
-<<<<<<< HEAD
-    		<input type="text" name="Password"><span class="highlight"></span><span class="bar"></span>
-=======
     		<input type="password" name="Password"><span class="highlight"></span><span class="bar"></span>
->>>>>>> 2514d16864e0533174bb30a4341c5d2976ca8609
     		<label>Password</label>
   		</div>
   		<button type="submit" class="button buttonBlue">Login
