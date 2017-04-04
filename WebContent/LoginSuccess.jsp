@@ -13,9 +13,17 @@
 		String user = request.getParameter("Username");
 		String pass = request.getParameter("Password");
 		
+		System.out.println("");
+		System.out.println(user);
+		System.out.println(pass);
+		
 		boolean res = loginClass.login(user, pass);
 		
+		System.out.println(res);
+		
 		LoginObject u = loginClass.getUser(user, pass);
+		
+		
 		
 		if (res && u!= null)
 		{

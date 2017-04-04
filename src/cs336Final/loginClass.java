@@ -54,14 +54,15 @@ public class loginClass
 			
 			String e = result.getString(5);
 			String add = result.getString(6);
-			int x = result.getInt(7);
-			return new LoginObject(a, b , n , p , e , add,x);
+			int x = result.getInt(9);
+			return new LoginObject(a, b , n , p , e , add, x);
 			
 			
 		}
 		
 		catch (Exception e)
 		{
+			System.out.println(e);
 			return o;
 		}
 		
