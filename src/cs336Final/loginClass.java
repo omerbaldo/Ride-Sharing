@@ -54,8 +54,8 @@ public class loginClass
 			
 			String e = result.getString(5);
 			String add = result.getString(6);
-			
-			return new LoginObject(a, b , n , p , e , add);
+			int x = result.getInt(7);
+			return new LoginObject(a, b , n , p , e , add,x);
 			
 			
 		}
