@@ -22,7 +22,10 @@
 			</tr>
 		</table>
 		<br> <button type="submit" class="button buttonBlue">Submit</button>
-	</form> -->
+	</form> 
+	adfafdsd
+	afadadadfadadas
+	-->
 	
 	<form method="post" action="LoginSuccess.jsp">
 		<h1>Ride Share Login</h1>
@@ -32,8 +35,8 @@
     		<label>Username</label>
   		</div>
   		<div class="group">
-    		<input type="text" name="Password"><span class="highlight"></span><span class="bar"></span>
-    		<label>Email</label>
+    		<input type="password" name="Password"><span class="highlight"></span><span class="bar"></span>
+    		<label>Password</label>
   		</div>
   		<button type="submit" class="button buttonBlue">Login
     		<div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
