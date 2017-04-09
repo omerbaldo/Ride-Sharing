@@ -12,17 +12,21 @@ public class LoginObject
 	private String password;
 	private String email;
 	private String address;
+	private String phone;
+	private int age;
 	private int active;
 	
-	public LoginObject(int user_id, int typeofuser, String username, String password, String email, String address, int active)
+	public LoginObject(int user_id, int typeofuser, String username, String password, String email, String address, String phone, int age, int active)
 	{
-		this.setUser_id(user_id);
+		this.user_id = user_id;
 		this.typeofuser = typeofuser;
 		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.address = address;
-		this.setActive(active);
+		this.active = active;
+		this.age = age;
+		this.phone = phone;
 	}
 	
 	public void setUsername(String username)
@@ -126,9 +130,10 @@ public class LoginObject
 			
 			String e = result.getString(5);
 			String add = result.getString(6);
-			int x = result.getInt(7);
-			
-			return new LoginObject(a, b , n , p , e , add, x);
+			String phone = result.getString(7);
+			int age = result.getInt(8);
+			int x = result.getInt(9);
+			return new LoginObject(a, b , n , p , e , add, phone, age, x);
 			
 			
 		}
@@ -213,6 +218,22 @@ public class LoginObject
 
 	public void setActive(int active) {
 		this.active = active;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
 	}
 	 
 }
