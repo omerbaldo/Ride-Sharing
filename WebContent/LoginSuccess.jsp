@@ -43,6 +43,11 @@
 				
 				
 			}
+			else if (u.getUserType() == 2)
+			{
+				session.setAttribute("user", u);
+				response.sendRedirect(request.getContextPath() + "/system_support/systemSupportDashboard.jsp");
+			}
 			else
 			{
 				/*

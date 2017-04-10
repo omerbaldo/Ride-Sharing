@@ -5,13 +5,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" type="text/css" href="admin.css">
+<link rel="stylesheet" type="text/css" href="user.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User Dashboard</title>
 </head>
 <div class="tab">
-  <button id= "selected" class="tablinks">Dashboard</button>
-  <form method ='post' action = "adminCreateSupport.jsp"><button class="tablinks">Create Support</button></form>
+  <form method = "post" action = "systemSupportDashboard.jsp"><button class="tablinks">Dashboard</button></form>
+  <button class="tablinks" id = "selected">Ad Manager</button>
+  <form method ='post' action = "systemSupportUserManager.jsp"> <button class="tablinks">User Manager</button></form>
   <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <body>

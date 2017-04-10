@@ -10,8 +10,8 @@
 <title>User Dashboard</title>
 </head>
 <div class="tab">
-  <button id= "selected" class="tablinks">Dashboard</button>
-  <form method ='post' action = "adminCreateSupport.jsp"><button class="tablinks">Create Support</button></form>
+  <form method ='post' action = "adminDashboard.jsp"><button class="tablinks">Dashboard</button></form>
+  <button id= "selected" class="tablinks">Create Support</button>
   <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <body>
