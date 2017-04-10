@@ -19,6 +19,7 @@
   <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <h1> Active Users</h1>
+<form method = "post" action= "lock.jsp">
 <table>
 <%
 ArrayList<String> a = loginClass.getUserNames();
@@ -31,16 +32,17 @@ for ( int i =0; i < a.size(); i++)
 %>
 
 <tr>
-<td style="padding:0 15px 0 15px;"> <%=a.get(i)%></td>
+<td style="padding:0 15px 0 15px;" > <%=a.get(i)%></td>
 <td style="padding:0 15px 0 15px;"><%=b.get(i)%> </td>
-<td style="padding:0 15px 0 15px;"><button class="btn red" type="button"><span> Reset Password </span></button></td>
-<td style="padding:0 15px 0 15px;"><button class="btn red" type="button"><span> Lock </span></button></td>
+<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> Lock </span></button></td>
+<td><input type = "hidden" name ="username" value = "<%=a.get(i)%>"/></td>
+<td><input type = "hidden" name ="password" value ="<%=b.get(i)%>"/></td>
 </tr>
 
 <%       
 }
 %>
-
 </table>
+</form>
 </body>
 </html>
