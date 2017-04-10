@@ -204,9 +204,31 @@ public class LoginObject
 		return o;
 		
 	}
-	public static void lock(String username)
+	
+	public static ArrayList<LoginObject> getUsers() throws SQLException
 	{
-		sql.upd("UPDATE app.User SET active='0' WHERE username='"+username+"'");
+		ArrayList<LoginObject> o = new ArrayList<>();
+		ResultSet result = sql.query("Select * from app.User").get();
+		
+		while (result.next())
+		{
+			int a = result.getInt(1);
+			int b = result.getInt(2);
+			String n = result.getString(3);
+			String p = result.getString(4);
+			
+			String e = result.getString(5);
+			String add = result.getString(6);
+			String phone = result.getString(7);
+			int age = result.getInt(8);
+			int x = result.getInt(9);
+			o.add(new LoginObject(a, b , n , p , e , add, phone, age, x));
+		}
+		return o;
+	}
+	public static void lock(String username, int active)
+	{
+		sql.upd("UPDATE app.User SET active='"+active+"' WHERE username='"+username+"'");
 	}
 	
 	

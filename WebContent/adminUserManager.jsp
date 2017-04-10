@@ -24,19 +24,31 @@
 <%
 ArrayList<String> a = loginClass.getUserNames();
 ArrayList<String> b = loginClass.getUserPasswords();
+ArrayList<LoginObject> c = LoginObject.getUsers();
 
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 
 for ( int i =0; i < a.size(); i++)
 {
+	String btn = "";
+	int reverse = 0;
+	if (c.get(i).getActive() == 1)
+		btn = "Lock";
+	else
+		btn = "Unlock";
+	
+	if (c.get(i).getActive() == 0)
+		reverse = 1;
+	else
+		reverse = 0;
 %>
 
 <tr>
 <td style="padding:0 15px 0 15px;" > <%=a.get(i)%></td>
 <td style="padding:0 15px 0 15px;"><%=b.get(i)%> </td>
-<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> Lock </span></button></td>
+<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> <%=btn %> </span></button></td>
 <td><input type = "hidden" name ="username" value = "<%=a.get(i)%>"/></td>
-<td><input type = "hidden" name ="password" value ="<%=b.get(i)%>"/></td>
+<td><input type = "hidden" name ="reverse" value ="<%=reverse%>"/></td>
 </tr>
 
 <%       

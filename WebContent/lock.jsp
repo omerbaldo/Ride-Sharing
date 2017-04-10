@@ -16,9 +16,9 @@
 	session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 
 	String user = request.getParameter("username");
-	String pass = request.getParameter("password");
+	String reverse = request.getParameter("reverse");
 	
-	LoginObject.lock(user);
+	LoginObject.lock(user, Integer.parseInt(reverse));
 	
 	System.out.println(user);
 	
