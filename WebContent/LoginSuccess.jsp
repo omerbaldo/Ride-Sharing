@@ -27,8 +27,9 @@
 		
 		if (res && u!= null)
 		{
-			
-			if (u.getUserType() == 1)
+			if(u.getActive() == 0)
+				out.print("<h1>User Banned<h1>");
+			else if (u.getUserType() == 1)
 			{
 			
 				/*
