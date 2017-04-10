@@ -12,18 +12,13 @@
   	<button class="tablinks" id="selected">Give a Ride</button>
 	<form method ='post' action = "userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
 	<form method ='post' action = "userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
+	  <form method ='post' action = "carManagement.jsp" id="selected"><button class="tablinks" >Cars</button></form>
 	<form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 
 <link rel="stylesheet" type="text/css" href="user.css">
 <link rel="stylesheet" type="text/css" href="dropdown.css">
 <link rel="stylesheet" type="text/css" href="overflow.css">
-
-
-
-
-
-
 
 </head>
 <body>
@@ -87,7 +82,6 @@ session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 </div>
 
 </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-
 
 <form action="">
   <label> Make this a regularly scheduled offer? </label>
