@@ -2,6 +2,9 @@
     pageEncoding="UTF-8"%>
     <%@ page import="cs336Final.LoginObject"%>
     <%@ page import="cs336Final.carObj"%>
+    <%@ page import="cs336Final.carObj.car"%>
+    
+	<%@ page import="java.util.*"%>
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -25,7 +28,6 @@
 <link rel="stylesheet" type="text/css" href="dropdown.css">
 <link rel="stylesheet" type="text/css" href="overflow.css">
 
-<h3>Your Cars</h3>
 <%
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 LoginObject x = (LoginObject) session.getAttribute("user");
@@ -59,7 +61,10 @@ if(Make==null){
 
 
 
+
 %>
+<h3>Cars For <% out.print(x.getUsername()); %> </h3>
+
 
 
 <h3>Register For a New Car</h3>
@@ -92,6 +97,49 @@ if(Make==null){
 		  
 		  <input type="submit" value="Submit">
 		</form> 
+
+<h3>Manage Your Cars</h3>
+
+
+
+<form method = "post" action= "car_delete.jsp">
+
+<table>
+  <tr>
+    <th>Lincense</th>
+    <th>Make</th>
+    <th>Model</th>
+    <th>Year</th>
+    <th>Deleting</th>
+    
+  </tr>
+
+<%
+	//car obj is null
+	ArrayList<car> cars = carObj.getCars(x);
+	for ( int i =0; i < cars.size(); i++){
+		car c = cars.get(i);
+%>
+
+	<tr>
+		<td style="padding:0 15px 0 15px;" > <%= c.Lincense %></td>
+		<td style="padding:0 15px 0 15px;"><%= c.Make %> </td>
+		<td style="padding:0 15px 0 15px;"><%= c.Model %> </td>
+		<td style="padding:0 15px 0 15px;"><%= c.year %> </td>
+		<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> Delete </span></button></td>
+		<td><input type = "hidden" name ="uid" value = "<%=c.user_id%>"/></td>
+		<td><input type = "hidden" name ="lid" value = "<%=c.Lincense%>"/></td>
+		
+	</tr>
+	</br>
+
+<%       
+}
+%>
+</table>
+</form>
+
+
 
 
 </body>

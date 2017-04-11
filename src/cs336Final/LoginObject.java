@@ -204,6 +204,10 @@ public class LoginObject
 		return o;
 		
 	}
+	public static void lock(String username)
+	{
+		sql.upd("UPDATE app.User SET active='0' WHERE username='"+username+"'");
+	}
 	
 	public static ArrayList<LoginObject> getUsers() throws SQLException
 	{
