@@ -10,6 +10,24 @@
 <link rel="stylesheet" type="text/css" href="user.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Manage Users</title>
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
 </head>
 <body>
 <div class="tab">
@@ -21,6 +39,10 @@
 <h1> Active Users</h1>
 <form method = "post" action= "lock.jsp">
 <table>
+  <tr>
+    <th>Username</th>
+    <th>Password</th>
+  </tr>
 <%
 ArrayList<String> a = loginClass.getUserNames();
 ArrayList<String> b = loginClass.getUserPasswords();

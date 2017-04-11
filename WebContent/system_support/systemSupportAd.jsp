@@ -10,6 +10,25 @@
 <link rel="stylesheet" type="text/css" href="user.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User Dashboard</title>
+
+<style>
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+</style>
 </head>
 <div class="tab">
   <form method = "post" action = "systemSupportDashboard.jsp"><button class="tablinks">Dashboard</button></form>
@@ -21,10 +40,10 @@
 	<%
 	session.setAttribute("user", (LoginObject) session.getAttribute("user"));%>
 	
-	<form method="post" action="LoginSuccess.jsp">
+	<form method="post" action="addAd.jsp">
 		<br><br>
   		<div class="group">
-    		<input type="text" name="Ad Title"><span class="highlight"></span><span class="bar"></span>
+    		<input type="text" name="adTitle"><span class="highlight"></span><span class="bar"></span>
     		<label>Ad Title</label>
   		</div>
 		<br><br>
@@ -34,8 +53,12 @@
 	</form>
 	
 	<h1> Active Ad List</h1>
-<form method = "post" action= "lock.jsp">
+<form method = "post" action= "deleteAd.jsp">
 <table>
+<tr>
+  <th>Ad Title</th>
+   <th>Times Seen</th>
+</tr>
 <%
 ArrayList<AdObj> a = AdObj.getAdList();
 
@@ -43,12 +66,11 @@ for (AdObj x: a)
 {
 		
 %>
-
 <tr>
 <td style="padding:0 15px 0 15px;" > <%=x.getTitle()%></td>
 <td style="padding:0 15px 0 15px;"><%=x.getSeen()%> </td>
 <td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Delete</span></button></td>
-<td><input type = "hidden" name ="username" value = "<%=x.getId()%>"/></td>
+<td><input type = "hidden" name ="delId" value = "<%=x.getId()%>"/></td>
 </tr>
 
 <%       

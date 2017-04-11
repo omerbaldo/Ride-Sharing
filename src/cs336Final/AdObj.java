@@ -66,6 +66,20 @@ public class AdObj
 		
 	}
 	
+	public static void addAd(String title)
+	{
+		String q = "INSERT INTO app.Advertisement (Num_Appearances, Ad_Title) VALUES ('0', '"+title+"')";
+		
+		sql.upd(q);
+		
+	}
+	public static void deleteAd(int id)
+	{
+		String q = "DELETE FROM app.Advertisement WHERE Ad_Id='"+id+"'";
+		sql.upd(q);
+		
+	}
+	
 	
 	
 	
