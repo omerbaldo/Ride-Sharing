@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ page import="cs336Final.LoginObject"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <%@ page import="cs336Final.carObj"%>
+    <%@ page import="cs336Final.carObj.car"%>
+    
+	<%@ page import="java.util.*"%>
+
+<!DOCTYPE HTML>
+<!--  <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> --> 
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -24,66 +30,67 @@
 <body>
 <%
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
+LoginObject x = (LoginObject) session.getAttribute("user");
 %>
-<div class="dropdown">
-  <button class="dropbtn">Pickup location </button>
-  <div class="dropdown-content">
-    <a href="#">Livingston</a>
-    <a href="#">College Ave</a>
-    <a href="#">Cook</a>
-  </div>
-</div>
 
 
-<div class="dropdown">
-  <button class="dropbtn">Destination </button>
-  <div class="dropdown-content">
-    <a href="#">Livingston</a>
-    <a href="#">College Ave</a>
-    <a href="#">Cook</a>
-  </div>
-</div>
+
+<%
+ArrayList<car> cars = carObj.getCars(x);
+
+if(cars.size() ==0){
+
+%>
+<h1>You need to have a car before offering a ride. Go to car tab to register one of your cars !</h1>
+<%
+	}else{
+%>
 
 
-<div class="dropdown">
-  <button class="dropbtn">Start Time </button>
-  <div class="dropdown-content">
-      <a href="#">6:00am</a>
-      <a href="#">7:00am</a>
-      <a href="#">8:00am</a>
-      <a href="#">9:00am</a>
-      <a href="#">10:00am</a>
-       <a href="#">3:00pm</a>
-  </div>
-</div>
+<form>
+Pickup 
+	 <select name="pickup">
+	    <option value="busch">Busch</option>
+	    <option value="collegeave">College Ave</option>
+	    <option value="livi">Livingston</option>
+	    <option value="cook">Cook</option>
+	  </select>
+ Destination 
 
-<div class="dropdown">
-  <button class="dropbtn">End Time </button>
-  <div class="dropdown-content">
-      <a href="#">6:00am</a>
-      <a href="#">7:00am</a>
-      <a href="#">8:00am</a>
-      <a href="#">9:00am</a>
-      <a href="#">10:00am</a>
-       <a href="#">3:00pm</a>
-  </div>
-</div>
+	 <select name="dest">
+	    <option value="busch">Busch</option>
+	    <option value="collegeave">College Ave</option>
+	    <option value="livi">Livingston</option>
+	    <option value="cook">Cook</option>
+	  </select>
+  
+Starttime 
+	<input type="datetime-local" name="startTime">
+Endtime d
+	<input type="datetime-local" name="endTime">
+	
+	
+Car	
+	 <select name="cars">
+	 <%
+		for ( int i =0; i < cars.size(); i++){
+			car c = cars.get(i);
+	    	
+	 %>
+	 
+	    <option value= <%= c.Lincense %>   >  <%= c.Make %>  </option>	    
+	   <%
+	   }
+	   %>
+	 
+	  </select>
+  
+
+</form>
 
 
-<div class="dropdown">
-  <button class="dropbtn">Your Car </button>
-  <div class="dropdown-content">
-      <a href="#">Car 1</a>
-      <a href="#">Car 2</a>
-      <a href="#">Car 3</a>
-      <a href="#">Car 4</a>
-      <a href="#">Car 5</a>
-  </div>
-</div>
 
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-
-<form action="">
+<form action="rides/rideOffers.jsp">
   <label> Make this a regularly scheduled offer? </label>
   </br>
   <input type="radio" name="reoccuring" value="yes"> Yes <br>
@@ -100,6 +107,27 @@ session.setAttribute("user", (LoginObject) session.getAttribute("user"));
   
   <button> Make ride public </button>
 </form>
+
+
+
+
+
+
+<%} %>
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type='text/javascript'>
+console.log("hey");
+$(document).ready(function(){
+	var d = new Date();	//utc time zone. 4 hrs ahead
+	d.setUTCHours(d.getUTCHours() - 4); //ESTRN TIME
+    $('input[type=datetime-local]').val(d.toJSON().slice(0,19));
+});
+
+</script>
+
+
+
 
 
 </body>
