@@ -47,16 +47,16 @@ if(cars.size() ==0){
 %>
 
 
-<form>
-Pickup 
+<form action = "rides/rideGiving.jsp">
+	 Pickup 
 	 <select name="pickup">
 	    <option value="busch">Busch</option>
 	    <option value="collegeave">College Ave</option>
 	    <option value="livi">Livingston</option>
 	    <option value="cook">Cook</option>
 	  </select>
- Destination 
-
+	  
+     Destination 
 	 <select name="dest">
 	    <option value="busch">Busch</option>
 	    <option value="collegeave">College Ave</option>
@@ -64,49 +64,50 @@ Pickup
 	    <option value="cook">Cook</option>
 	  </select>
   
-Starttime 
+	Starttime 
 	<input type="datetime-local" name="startTime">
-Endtime d
+	
+	Endtime 
 	<input type="datetime-local" name="endTime">
 	
-	
-Car	
-	 <select name="cars">
+	Car	
+	<select name="cars">
 	 <%
 		for ( int i =0; i < cars.size(); i++){
-			car c = cars.get(i);
-	    	
-	 %>
-	 
+			car c = cars.get(i);	    	
+	 %>	 
 	    <option value= <%= c.Lincense %>   >  <%= c.Make %>  </option>	    
 	   <%
 	   }
-	   %>
-	 
-	  </select>
+	   %> 
+	</select>
+	
+	</br>
   
+	  <label> Make this a regularly scheduled offer? </label>
+	  </br>
+	  <input type="radio" name="offer" value="yes"> Yes <br>
+	  <input type="radio" name="offer" value="no"> No <br>
+	 </br>
+	  
+	  <label> If yes, then how often? </label>
+	  </br>
+	  <input type="radio" name="often" value="Daily"> Daily <br>
+	  <input type="radio" name="often" value="Weekly"> Weekly <br>
+	  <input type="radio" name="often" value="Monthly"> Monthly <br>
+	    </br>
+	    </br>
+	  
+	  <button> Make ride public </button>
+
+
+
+
 
 </form>
 
 
 
-<form action="rides/rideOffers.jsp">
-  <label> Make this a regularly scheduled offer? </label>
-  </br>
-  <input type="radio" name="reoccuring" value="yes"> Yes <br>
-  <input type="radio" name="reoccuring" value="no"> No <br>
- </br>
-  
-  <label> If yes, then how often? </label>
-  </br>
-  <input type="radio" name="reoccuring" value="Daily"> Daily <br>
-  <input type="radio" name="reoccuring" value="Weekly"> Weekly <br>
-  <input type="radio" name="reoccuring" value="Monthly"> Monthly <br>
-    </br>
-    </br>
-  
-  <button> Make ride public </button>
-</form>
 
 
 
