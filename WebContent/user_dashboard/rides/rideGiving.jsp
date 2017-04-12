@@ -53,6 +53,35 @@ rideObj r = new rideObj();
 
 // Constantly spin waiting for ride requests to come in from a table. 
 
+String pickup = request.getParameter("pickup");
+String dest = request.getParameter("dest");
+String startTime = request.getParameter("startTime");
+String endTime = request.getParameter("endTime");
+String often = request.getParameter("offer");
+//System.out.println("often? " + often);
+
+if(often.equals("yes")){
+	
+	 often = request.getParameter("often");
+	 if(often.equals("Daily")){
+		 
+	 }else if(often.equals("Weekly")){
+		 
+	 }else if(often.equals("Monthly")){
+		 
+	 }
+	 
+	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often);
+	 
+}else{
+	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often);
+}
+
+System.out.println("pickup " + pickup);
+System.out.println("dest " + pickup);
+System.out.println("starttime " + startTime);
+System.out.println("endtime " + endTime);
+
 %>
 
 

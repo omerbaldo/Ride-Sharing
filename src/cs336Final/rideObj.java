@@ -12,10 +12,8 @@ public class rideObj {
 	 * false if ride is over
 	 */
 	
-	public static boolean addToDB(int rideID, Date from, Date to, int locationfrom, int locationto, boolean regScheduled, int often){
-		/**
-		 * 0 for rating, 
-		 */		
+	public static boolean addToDB(int userID, String from, String to, String locationfrom, String locationto, String regScheduled, String often){
+
 		try
 		{
 			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
@@ -28,8 +26,15 @@ public class rideObj {
 			Statement stmt = con.createStatement();
 
 			//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-			String str = "INSERT INTO app.Ride (ride_id,date,Ad_income) VALUES (";			
-			
+			String str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd) VALUES ("
+					+ "\" " + from + "\", "
+					+ "\" " + to + "\", "
+					+ "\" " + regScheduled + "\", "
+					+ "0, "
+					+ userID + ", "
+					+ "\" " + locationfrom + "\", "
+					+ "\" " + locationto + "\" )";
+		
 			System.out.print(str);
 			//Run the query against the DB
 			int result = stmt.executeUpdate(str);
