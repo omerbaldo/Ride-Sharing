@@ -32,7 +32,6 @@ LoginObject x = (LoginObject) session.getAttribute("user");
 String To = request.getParameter("To");
 String Subject = request.getParameter("Subject");
 String Content = request.getParameter("Content");
-String Date = request.getParameter("Date");
 System.out.println("Console");
 
 
@@ -40,13 +39,13 @@ if(To == null){
 	//First time accessing page
 	System.out.println("First time accessing Page");
 }else{
-	if(To!=null && Subject!=null && Content!=null && Date!=null){
-		if(To.length() == 0 || Subject.length() == 0 || Content.length() == 0 || Date.length() == 0){
+	if(To!=null && Subject!=null && Content!=null){
+		if(To.length() == 0 || Subject.length() == 0 || Content.length() == 0){
 			System.out.println("Error ! ");
 		}else{
 			System.out.println("Insert and print out result of insertion ! ");
 			
-			if(MessageObject.sendmsg(x, To, Subject, Content, Date) == false){
+			if(MessageObject.sendmsg(x, To, Subject, Content) == false){
 				System.out.println("insertion failed");
 			}else{
 				System.out.println("insertion succeeded");
@@ -63,22 +62,18 @@ if(To == null){
 
 <!-- Form For Sending a New Email  -->
 		<form method ='post' action="messageUser.jsp">
-		  To (Enter User ID):<br>
+		  To (Enter User ID): <br>
 		  <input type="text" name="To">
 		  <br>
-		  
-		  Subject:<br>
+		  Subject: <br>
 		  <input type="text" name="Subject">
-		  <br><br>
-		  
-		  Content:<br>
-		  <input type="text" name="Content">
-		  <br><br>
-		  
-		  Date<br>
-		  <input type="text" name="Date">
-		  <br><br>
-		  
+		  <br>
+		  <br>
+		  Content <br>
+		  <textarea name="Content" cols="40" rows="5">
+		  </textarea>
+		  <br>
+		  <br>
 		  <input type="submit" value="Send">
 		</form> 
 
