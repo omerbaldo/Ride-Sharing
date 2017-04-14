@@ -80,7 +80,28 @@ public class AdObj
 		
 	}
 	
-	
-	
-	
+	public static String getRandomAd() throws SQLException
+	{
+		ArrayList<AdObj> ads = getAdList();
+		
+		if (ads.size() == 0)
+		{
+			return "";
+		}
+		else
+		{
+			AdObj serve = ads.get(0);
+			
+			for (AdObj x: ads)
+			{
+				if (x.getSeen() > serve.getSeen())
+					serve = x;
+			}
+			
+			sql.upd("UPDATE app.Advertisement SET Num_Appearances="+serve.getSeen()+1+" WHERE Ad_Id="+serve.getId());
+			
+			return serve.getTitle();
+		}
+			
+	}
 }
