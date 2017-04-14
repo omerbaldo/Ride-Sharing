@@ -58,6 +58,9 @@ String dest = request.getParameter("dest");
 String startTime = request.getParameter("startTime");
 String endTime = request.getParameter("endTime");
 String often = request.getParameter("offer");
+String car = request.getParameter("cars");
+System.out.println("car " + car);
+
 //System.out.println("often? " + often);
 
 if(often.equals("yes")){
@@ -71,10 +74,10 @@ if(often.equals("yes")){
 		 
 	 }
 	 
-	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often);
+	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
 	 
 }else{
-	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often);
+	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often, car);
 }
 
 System.out.println("pickup " + pickup);
@@ -82,10 +85,37 @@ System.out.println("dest " + pickup);
 System.out.println("starttime " + startTime);
 System.out.println("endtime " + endTime);
 
+
+
+while(true){	//constantly spin until user is done selecting all riders 
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 %>
+<table>
+
+<tr>
+    <th>USER NAME  		   </th>
+    <th>LeaderBoard Rank   </th>
+</tr>
 
 
 
+
+
+</table>
+
+<%
+}
+%>
 
 
 
