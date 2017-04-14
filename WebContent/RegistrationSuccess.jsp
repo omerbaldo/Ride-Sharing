@@ -21,7 +21,7 @@
 		if (res)
 			out.print("<h1>Register Worked<h1>");
 		else
-			out.print("<h1>Register Failed<h1>");
+			out.print("<h1>Register Failed. Possibly a duplicate user<h1>");
 			
 	%>
 </body>

@@ -14,7 +14,7 @@
   <form method = 'post' action= "systemSupportAd.jsp"><button class="tablinks">Ad Manager</button></form>
   <form method ='post' action = "systemSupportUserManager.jsp"> <button class="tablinks">User Manager</button></form>
   <form method = 'post' action = "systemSupportResetPassword.jsp"> <button class="tablinks">Reset Users</button></form>
-  <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
+  <form method ='post'action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <body>
 	<%
