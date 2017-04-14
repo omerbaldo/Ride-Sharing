@@ -70,7 +70,7 @@ for ( int i =0; i < a.size(); i++)
 
 <form class= "tr" method = "post" action = "lock.jsp">
 	<span class ="td" style="padding:0 15px 0 15px;" > <%=a.get(i)%></span>
-	<span class = "td" tyle="padding:0 15px 0 15px;"><%=b.get(i)%> </span>
+	<span class = "td" style="padding:0 15px 0 15px;"><%=b.get(i)%> </span>
 	<span class = "td" style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> <%=btn %> </span></button></span>
 	<span class = "td"><input type = "hidden" name ="username" value = "<%=a.get(i)%>"/></span>
 	<span class = "td" ><input type = "hidden" name ="reverse" value ="<%=reverse%>"/></span>

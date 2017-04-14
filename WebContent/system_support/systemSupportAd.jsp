@@ -12,22 +12,26 @@
 <title>User Dashboard</title>
 
 <style>
-table {
+.table {
     border-collapse: collapse;
     width: 100%;
 }
 
-th, td {
+.th, .td {
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+.tr:nth-child(even){background-color: #f2f2f2}
 
-th {
+.th {
     background-color: #4CAF50;
     color: white;
 }
+
+.table { display: table; } 
+.table>* { display: table-row; }
+.table>*>* { display: table-cell; }
 </style>
 </head>
 <div class="tab">
@@ -53,12 +57,11 @@ th {
 	</form>
 	
 	<h1> Active Ad List</h1>
-<form method = "post" action= "deleteAd.jsp">
-<table>
-<tr>
-  <th>Ad Title</th>
-   <th>Times Seen</th>
-</tr>
+<div class = "table">
+	<div class="tr">
+	  <span class="th">Ad Title</span>
+	  <span class = "th">Times Seen</span>
+	</div>
 <%
 ArrayList<AdObj> a = AdObj.getAdList();
 
@@ -66,18 +69,16 @@ for (AdObj x: a)
 {
 		
 %>
-<tr>
-<td style="padding:0 15px 0 15px;" > <%=x.getTitle()%></td>
-<td style="padding:0 15px 0 15px;"><%=x.getSeen()%> </td>
-<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Delete</span></button></td>
-<td><input type = "hidden" name ="delId" value = "<%=x.getId()%>"/></td>
-</tr>
+	<form class = "tr" method = "post" action = "deleteAd.jsp">
+		<span class="td" style="padding:0 15px 0 15px;" > <%=x.getTitle()%></span>
+		<span class="td" style="padding:0 15px 0 15px;"><%=x.getSeen()%> </span>
+		<span class = "td" style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Delete</span></button></span>
+		<span class = "td"><input type = "hidden" name ="delId" value = "<%=x.getId()%>"/></span>
+	</form>
 
 <%       
 }
 %>
-</table>
-</form>
-
+</div>
 </body>
 </html>
