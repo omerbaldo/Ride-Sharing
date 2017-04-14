@@ -29,6 +29,15 @@
     color: white;
 }
 
+	h1
+	{
+		font-family :'Roboto', sans-serif
+	}
+	h2
+	{
+		font-family :'Roboto', sans-serif
+	}
+
 .table { display: table; } 
 .table>* { display: table-row; }
 .table>*>* { display: table-cell; }
@@ -48,9 +57,9 @@
 	<form class = "table" method="post" action="addAd.jsp">
 		<br><br>
   		<div class="tr">
-  			<span class="td"><h2>Ad Title</h2></span>
+  			<span class="td"><h2 style="text-align:right;">Ad Title</h2></span>
     		<span class="td"><input type="text" name="adTitle"><span class="highlight"></span><span class="bar"></span></span>
-    	 	<span class="td"><button type="submit" class="btn blue">
+    	 	<span class="td"><button  type="submit" class="btn blue">
     			<span>Create Ad</span>
  			</button></span>
   		</div>
