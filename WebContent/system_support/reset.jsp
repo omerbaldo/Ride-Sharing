@@ -16,7 +16,7 @@
 
 	String user = request.getParameter("username");
 	
-	LoginObject.reset(user, "password");
+	LoginObject.reset(user);
 	
 	System.out.println(user);
 	

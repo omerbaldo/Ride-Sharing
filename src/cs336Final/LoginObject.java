@@ -234,6 +234,10 @@ public class LoginObject
 	{
 		sql.upd("UPDATE app.User SET active='"+active+"' WHERE username='"+username+"'");
 	}
+	public static void reset(String username)
+	{
+		sql.upd("UPDATE app.User SET password='password' WHERE username='"+username+"'");
+	}
 	
 	
 	public static boolean setInactive(LoginObject l)

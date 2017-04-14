@@ -11,22 +11,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Reset Users</title>
 <style>
-table {
+.table {
     border-collapse: collapse;
     width: 100%;
 }
 
-th, td {
+.th, .td {
     text-align: left;
     padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
+.tr:nth-child(even){background-color: #f2f2f2}
 
-th {
+.th {
     background-color: #4CAF50;
     color: white;
 }
+
+.table { display: table; } 
+.table>* { display: table-row; }
+.table>*>* { display: table-cell; }
 </style>
 </head>
 <body>
@@ -38,34 +42,33 @@ th {
   <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <h1> Active Users</h1>
-<form method = "post" action= "reset.jsp">
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Password</th>
-  </tr>
+<div class="table">
+  <div class="tr">
+    <span class= "th">Username</span>
+    <span class= "th">Password</span>
+  </div>
 <%
-ArrayList<String> a = loginClass.getUserNames();
-ArrayList<String> b = loginClass.getUserPasswords();
+
 ArrayList<LoginObject> c = LoginObject.getUsers();
+
+
 
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 
-for ( int i =0; i < a.size(); i++)
+for (LoginObject x: c)
 {
 %>
 
-<tr>
-<td style="padding:0 15px 0 15px;" > <%=a.get(i)%></td>
-<td style="padding:0 15px 0 15px;"><%=b.get(i)%> </td>
-<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Reset Password</span></button></td>
-<td><input type = "hidden" name ="username" value = "<%=a.get(i)%>"/></td>
-</tr>
+<form class= "tr" method = "post" action = "reset.jsp">
+	<span class ="td" style="padding:0 15px 0 15px;" > <%=x.getUsername()%></span>
+	<span class = "td" style="padding:0 15px 0 15px;"><%=x.getPassword()%> </span>
+	<span class = "td" style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Reset Password </span></button></span>
+	<span class = "td"><input type = "hidden" name ="username" value = "<%=x.getUsername()%>"/></span>
+</form>
 
 <%       
 }
 %>
-</table>
-</form>
+</div>
 </body>
 </html>
