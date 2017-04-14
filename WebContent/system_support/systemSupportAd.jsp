@@ -38,22 +38,23 @@
   <form method = "post" action = "systemSupportDashboard.jsp"><button class="tablinks">Dashboard</button></form>
   <button class="tablinks" id = "selected">Ad Manager</button>
   <form method ='post' action = "systemSupportUserManager.jsp"> <button class="tablinks">User Manager</button></form>
+  <form method = 'post' action = "systemSupportResetPassword.jsp"> <button class="tablinks">Reset Users</button></form>
   <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <body>
 	<%
 	session.setAttribute("user", (LoginObject) session.getAttribute("user"));%>
 	
-	<form method="post" action="addAd.jsp">
+	<form class = "table" method="post" action="addAd.jsp">
 		<br><br>
-  		<div class="group">
-    		<input type="text" name="adTitle"><span class="highlight"></span><span class="bar"></span>
-    		<label>Ad Title</label>
+  		<div class="tr">
+  			<span class="td"><h2>Ad Title</h2></span>
+    		<span class="td"><input type="text" name="adTitle"><span class="highlight"></span><span class="bar"></span></span>
+    	 	<span class="td"><button type="submit" class="btn blue">
+    			<span>Create Ad</span>
+ 			</button></span>
   		</div>
 		<br><br>
-  		<button type="submit" class="button buttonBlue">Create Ad
-    		<div class="ripples buttonRipples"><span class="ripplesCircle"></span></div>
- 		</button>
 	</form>
 	
 	<h1> Active Ad List</h1>
