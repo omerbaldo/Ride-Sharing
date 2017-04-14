@@ -9,43 +9,41 @@
 <head>
 <link rel="stylesheet" type="text/css" href="user.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Manage Users</title>
+<title>Reset Users</title>
 <style>
-.table {
+table {
     border-collapse: collapse;
     width: 100%;
 }
 
-.th, .td {
+th, td {
     text-align: left;
     padding: 8px;
 }
 
-.tr:nth-child(even){background-color: #f2f2f2}
+tr:nth-child(even){background-color: #f2f2f2}
 
-.th {
+th {
     background-color: #4CAF50;
     color: white;
 }
-
-.table { display: table; } 
-.table>* { display: table-row; }
-.table>*>* { display: table-cell; }
 </style>
 </head>
 <body>
 <div class="tab">
   <form method ='post' action = "systemSupportDashboard.jsp"><button class="tablinks">Dashboard</button></form>
   <form method = 'post' action = "systemSupportAd.jsp"> <button class="tablinks">Ad Manager</button></form>
-  <button class="tablinks"  id="selected">User Manager</button>
+  <form method = 'post' action = "systemSupportUserManager.jsp"> <button class="tablinks">User Manager</button></form>
+  <button class="tablinks"  id="selected">Reset Users</button>
   <form method ='post' action = "Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 <h1> Active Users</h1>
-<div class="table">
-  <div class="tr">
-    <span class= "th">Username</span>
-    <span class= "th">Password</span>
-  </div>
+<form method = "post" action= "reset.jsp">
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Password</th>
+  </tr>
 <%
 ArrayList<String> a = loginClass.getUserNames();
 ArrayList<String> b = loginClass.getUserPasswords();
@@ -55,30 +53,19 @@ session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 
 for ( int i =0; i < a.size(); i++)
 {
-	String btn = "";
-	int reverse = 0;
-	if (c.get(i).getActive() == 1)
-		btn = "Lock";
-	else
-		btn = "Unlock";
-	
-	if (c.get(i).getActive() == 0)
-		reverse = 1;
-	else
-		reverse = 0;
 %>
 
-<form class= "tr" method = "post" action = "lock.jsp">
-	<span class ="td" style="padding:0 15px 0 15px;" > <%=a.get(i)%></span>
-	<span class = "td" tyle="padding:0 15px 0 15px;"><%=b.get(i)%> </span>
-	<span class = "td" style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> <%=btn %> </span></button></span>
-	<span class = "td"><input type = "hidden" name ="username" value = "<%=a.get(i)%>"/></span>
-	<span class = "td" ><input type = "hidden" name ="reverse" value ="<%=reverse%>"/></span>
-</form>
+<tr>
+<td style="padding:0 15px 0 15px;" > <%=a.get(i)%></td>
+<td style="padding:0 15px 0 15px;"><%=b.get(i)%> </td>
+<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Reset Password</span></button></td>
+<td><input type = "hidden" name ="username" value = "<%=a.get(i)%>"/></td>
+</tr>
 
 <%       
 }
 %>
-</div>
+</table>
+</form>
 </body>
 </html>
