@@ -21,101 +21,86 @@
 <link rel="stylesheet" type="text/css" href="dropdown.css">
 <link rel="stylesheet" type="text/css" href="overflow.css">
 
-
-
-
-
-
-
 </head>
 <body>
+
+
 <%
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
+LoginObject x = (LoginObject) session.getAttribute("user");
 %>
 
-<h3>Step One: Fill Information</h3>
 
-<div class="dropdown">
-  <button class="dropbtn">Pickup location </button>
-  <div class="dropdown-content">
-    <a href="#">Livingston</a>
-    <a href="#">College Ave</a>
-    <a href="#">Cook</a>
-  </div>
-</div>
-
-
-<div class="dropdown">
-  <button class="dropbtn">Destination </button>
-  <div class="dropdown-content">
-    <a href="#">Livingston</a>
-    <a href="#">College Ave</a>
-    <a href="#">Cook</a>
-  </div>
-</div>
-
-
-<div class="dropdown">
-  <button class="dropbtn">Start Time </button>
-  <div class="dropdown-content">
-      <a href="#">6:00am</a>
-      <a href="#">7:00am</a>
-      <a href="#">8:00am</a>
-      <a href="#">9:00am</a>
-      <a href="#">10:00am</a>
-       <a href="#">3:00pm</a>
-  </div>
-</div>
-
-<div class="dropdown">
-  <button class="dropbtn">End Time </button>
-  <div class="dropdown-content">
-      <a href="#">6:00am</a>
-      <a href="#">7:00am</a>
-      <a href="#">8:00am</a>
-      <a href="#">9:00am</a>
-      <a href="#">10:00am</a>
-       <a href="#">3:00pm</a>
-  </div>
-</div>
-
-</br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
-
-
-
-
-
-<h3>Step Two: Find Rides </h3>
-
-<p>Pick up: Destination:  Starttime:    Endtime:  </p>
-
-<button> Search For The Ride ! </button>
-
-</br></br>
-
-<h4>Results: </h4>
-<div class="scroll">
-
-<table>
-  <tr>
-    <th>Origin</th>
-    <th>Destination</th>
-    <th>Host</th>
-    <th>Time</th>
-    <th>Select Ride</th>
-  </tr>
-  <tr>
-    <th>College Ave</th>
-    <th>Cook </th>
-    <th>Deep </th>
-    <th>9:00 Am </th>
-    <th><button> Select</button></th>
-  </tr>
+<form action = "rides/rideOffering.jsp">
+	 Pickup 
+	 <select name="pickup">
+	    <option value="busch">Busch</option>
+	    <option value="collegeave">College Ave</option>
+	    <option value="livi">Livingston</option>
+	    <option value="cook">Cook</option>
+	  </select>
+	  
+     Destination 
+	 <select name="dest">
+	    <option value="busch">Busch</option>
+	    <option value="collegeave">College Ave</option>
+	    <option value="livi">Livingston</option>
+	    <option value="cook">Cook</option>
+	  </select>
   
-</table>
+	Show All Rides After
+	<input type="datetime-local" name="startTime">
+	
+	
+	
+	
+	
+	  
+	  <button> Search </button>
+
+</form>
 
 
- </div>
+
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+
+<script type='text/javascript'>
+console.log("hey");
+$(document).ready(function(){
+	var d = new Date();	//utc time zone. 4 hrs ahead
+	d.setUTCHours(d.getUTCHours() - 4); //ESTRN TIME
+	d.setSeconds(0);
+
+    $('input[type=datetime-local]').val(d.toJSON().slice(0,19));
+});
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

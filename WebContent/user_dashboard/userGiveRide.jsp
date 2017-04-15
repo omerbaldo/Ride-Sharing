@@ -47,7 +47,7 @@ if(cars.size() ==0){
 %>
 
 
-<form action = "rides/rideGiving.jsp">
+<form action = "rides/rideGivingINT.jsp">
 	 Pickup 
 	 <select name="pickup">
 	    <option value="busch">Busch</option>
@@ -76,7 +76,7 @@ if(cars.size() ==0){
 		for ( int i =0; i < cars.size(); i++){
 			car c = cars.get(i);	    	
 	 %>	 
-	    <option value= <%= c.Lincense %>   >  <%= c.Make %>  </option>	    
+	    <option value= <%= c.Lincense %>   >  <%= c.Make + " " + c.Model %>  </option>	    
 	   <%
 	   }
 	   %> 
@@ -122,6 +122,7 @@ console.log("hey");
 $(document).ready(function(){
 	var d = new Date();	//utc time zone. 4 hrs ahead
 	d.setUTCHours(d.getUTCHours() - 4); //ESTRN TIME
+	d.setSeconds(0);
     $('input[type=datetime-local]').val(d.toJSON().slice(0,19));
 });
 

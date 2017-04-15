@@ -192,6 +192,29 @@ public class LoginObject
 		
 		
 	}
+	
+	public static String getUserName(int uid){
+		
+		try{
+			String str = "SELECT username FROM app.User where user_id = " + uid;
+		
+			ResultSet result = sql.query(str).get();
+			String name = null;
+			while(result.next()){
+				name = result.getString(1);
+				// TODO Auto-generated catch block
+			}
+			return name;
+		} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+		}
+		
+	}
+	
+	
+	
+	
 	public static ArrayList<String> getUserPasswords() throws SQLException
 	{
 		ArrayList<String> o = new ArrayList<String>();
