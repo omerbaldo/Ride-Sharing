@@ -50,6 +50,10 @@
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 LoginObject x = (LoginObject) session.getAttribute("user");
 Integer ride_id = (Integer) session.getAttribute("ride_id");
+
+session.setAttribute("ride_id", (Integer) session.getAttribute("ride_id"));
+
+
 System.out.println("ride id is " + ride_id);
 
 

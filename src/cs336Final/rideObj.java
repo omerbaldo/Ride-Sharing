@@ -424,8 +424,78 @@ public class rideObj {
 		}
 	}
 	
+	public static boolean isDriver(int userID, int rideID ){
+		
+		System.out.println("Checking if uid is a driver uid = " + userID + " and rideID = " + rideID);
+		
+		try{
+			//part 1 update the ride
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			Statement stmt = con.createStatement();
+			
+				String str = "SELECT COUNT(*) FROM app.Ride WHERE uid = " + userID + " and ride_id = " + rideID;
+				ResultSet rs = stmt.executeQuery(str);
+				int count = 0;
+				
+		
+				while (rs.next()) {      //for each row in the table 
+					count = rs.getInt(1);
+				}
+				
+				System.out.println("count is " + count);
+				if (count==1){
+					return true; 
+				}
+				return false;
+				
+		}catch(Exception e){
+		}
+		
+		return false;
+	}
 	
 	
+	
+	
+	
+	public static ArrayList<Integer> getIDSFromRideRequesters(int rideID){
+		System.out.println("ride id is " + rideID);
+		try{
+			//part 1 update the ride
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			Statement stmt = con.createStatement();
+			
+				String str = "Select requester From app.rideRequest Where ride_ID = " + rideID + " and accepted = 1";
+				ResultSet rs = stmt.executeQuery(str);
+				ArrayList<Integer> ids = new ArrayList<Integer>();
+		
+				while (rs.next()) {      //for each row in the table 
+					int i = rs.getInt(1);
+					System.out.println("user " + i + " is a requester for ride " + rideID );
+					ids.add(i);
+				}
+				return ids;
+		}catch(Exception e){
+		}
+		
+		return null;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	public static class rideOffer{
 		
 		public  int requestID; //ride id			1

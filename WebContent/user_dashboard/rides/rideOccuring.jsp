@@ -29,7 +29,8 @@
 <%
 
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
-
+session.setAttribute("ride_id", (Integer) session.getAttribute("ride_id"));
+System.out.println("yo omer ride_id is " +(Integer) session.getAttribute("ride_id"));
 
 %>
 
@@ -38,7 +39,7 @@ session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 
 <h1><% out.println(AdObj.getRandomAd()); %></h1>
 
-<form>
+<form method = "post" action = "../../ratingpage.jsp">
 <input type="submit" value = "Click Here To End The Ride">
 
 <!-- Here redirect to an intermediate page where you will

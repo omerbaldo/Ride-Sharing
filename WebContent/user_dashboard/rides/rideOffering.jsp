@@ -30,17 +30,6 @@
 <link rel="stylesheet" type="text/css" href="../user.css">
 
 
-
-
-
-
-
-
-
-
-
-
-
 <%
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 LoginObject x = (LoginObject) session.getAttribute("user");

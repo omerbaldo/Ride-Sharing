@@ -30,6 +30,8 @@
 	System.out.println("request id is " + requestID);
 	
 	session.setAttribute("requestID", (Integer) requestID);
+	session.setAttribute("ride_id", (Integer) Integer.parseInt(ride_id));
+
 //redirect
 	response.sendRedirect(request.getContextPath() + "/user_dashboard/rides/requestSent.jsp");
 

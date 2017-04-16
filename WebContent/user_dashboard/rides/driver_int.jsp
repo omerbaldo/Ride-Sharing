@@ -22,6 +22,10 @@ int ride_id = Integer.parseInt(request.getParameter("ride_id"));
 System.out.println("ride id is " + ride_id);
 String[] requestIDS = request.getParameterValues("requests");
 
+session.setAttribute("ride_id", (Integer) session.getAttribute("ride_id"));
+
+
+
 for(String s : requestIDS){
 	System.out.println("request ids are " + s);
 }

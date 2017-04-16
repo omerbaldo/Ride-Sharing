@@ -48,8 +48,14 @@
 
 
 <%
+session.setAttribute("user", (LoginObject) session.getAttribute("user"));
+LoginObject x = (LoginObject) session.getAttribute("user");
+session.setAttribute("ride_id", (Integer) session.getAttribute("ride_id"));
 
+		
+		
 Integer requestID = (Integer) session.getAttribute("requestID");
+		
 
 //Keep checking that rideId to see if accepted becomes true. if it does go forward. if not print denied
 
