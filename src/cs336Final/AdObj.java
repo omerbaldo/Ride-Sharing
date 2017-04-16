@@ -1,5 +1,8 @@
 package cs336Final;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -69,6 +72,32 @@ public class AdObj
 	public static void addAd(String title)
 	{
 		String q = "INSERT INTO app.Advertisement (Num_Appearances, Ad_Title) VALUES ('0', '"+title+"')";
+		
+		try
+		{
+			
+		
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//Create a connection to your DB
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			//Create a SQL statement
+			
+			PreparedStatement stmt = con.prepareStatement("INSERT INTO app.Advertisement (Num_Appearances, Ad_Title) VALUES (?,?)");
+			
+			stmt.setInt(1, 0);
+			stmt.setString(2, title);	
+			stmt.executeUpdate();
+				
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+			
+		}
 		
 		sql.upd(q);
 		
