@@ -62,6 +62,19 @@ public class rideObj {
 		}
 	}
 	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static Date convertStringToDateObj(String str){
 		String year = "";
 		int i;

@@ -69,9 +69,7 @@ int ride_id = 0;
 if(often.equals("yes")){
 	
 	 often = request.getParameter("often");
-	 if(often.equals("Daily")){
-		 
-	 }else if(often.equals("Weekly")){
+	 if(often.equals("Weekly")){
 		 
 	 }else if(often.equals("Monthly")){
 		 
