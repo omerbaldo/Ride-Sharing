@@ -1,6 +1,6 @@
 package cs336Final;
 
-import java.sql.Connection;
+import java.sql.*;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
@@ -23,22 +23,22 @@ public class MessageObject {
 			//Create a connection to your DB
 			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
 			//Create a SQL statement
-			Statement stmt = con.createStatement();
+			//Statement stmt = con.createStatement();
 			
 			System.out.println("Trying to insert" + To + Subject + Content);
 			String From = Integer.toString(user.getUser_id());
 			String Date = new java.text.SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new java.util.Date());
 			 
-			String str = "INSERT INTO `app`.`SEND_EMAIL` (`From`, `To`, `Subject`, `Content`, `Date`) VALUES";
-			str += "('" + From + "',";
-			str += "'" + To + "',";
-			str += "'" + Subject +"',";
-			str += "'" + Content + "',";
-			str += "'" + Date + "')";					
-			System.out.print(str);
-			//Run the query against the DB
-			stmt.executeUpdate(str);
-			
+			PreparedStatement updatemsgs = con.prepareStatement(
+			         "insert into `app`.`SEND_EMAIL` (`From`, `To`, `Subject`, `Content`, `Date`) values(?,?,?,?,?)");
+			      
+			      updatemsgs.setString(1, From);
+			      updatemsgs.setString(2, To);
+			      updatemsgs.setString(3, Subject);
+			      updatemsgs.setString(4, Content);
+			      updatemsgs.setString(5, Date);
+
+			      updatemsgs.executeUpdate();
 		
 			return true;
 		}

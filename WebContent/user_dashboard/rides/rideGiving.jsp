@@ -6,11 +6,16 @@
 <%@ page import="cs336Final.LoginObject"%>
     <%@ page import="cs336Final.rideObj"%>
     <%@ page import="cs336Final.RiderObject"%>
+        <%@ page import="cs336Final.rideObj.rideOffer"%>
+    
         <%@ page import="cs336Final.DriverObject"%>
     
 	<%@ page import="java.util.*"%>
-
-
+		<%@ page import="java.sql.*"%>
+				<%@ page import="java.sql.ResultSet"%>
+				<%@ page import="java.sql.SQLException"%>
+		
+	
 
 
 <html>
@@ -44,79 +49,58 @@
 <%
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 LoginObject x = (LoginObject) session.getAttribute("user");
+Integer ride_id = (Integer) session.getAttribute("ride_id");
 
-// First check if the rider exsists in the db. if yes up its ride amount, if not add it to the data base
-DriverObject.addDriver(x);
-
-// Next create a ride object and add it to the database.
-rideObj r = new rideObj();
-
-// Constantly spin waiting for ride requests to come in from a table. 
-
-String pickup = request.getParameter("pickup");
-String dest = request.getParameter("dest");
-String startTime = request.getParameter("startTime");
-String endTime = request.getParameter("endTime");
-String often = request.getParameter("offer");
-String car = request.getParameter("cars");
-System.out.println("car " + car);
-
-//System.out.println("often? " + often);
-
-if(often.equals("yes")){
-	
-	 often = request.getParameter("often");
-	 if(often.equals("Daily")){
-		 
-	 }else if(often.equals("Weekly")){
-		 
-	 }else if(often.equals("Monthly")){
-		 
-	 }
-	 
-	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
-	 
-}else{
-	 rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often, car);
-}
-
-System.out.println("pickup " + pickup);
-System.out.println("dest " + pickup);
-System.out.println("starttime " + startTime);
-System.out.println("endtime " + endTime);
+session.setAttribute("ride_id", (Integer) session.getAttribute("ride_id"));
 
 
+System.out.println("ride id is " + ride_id);
 
-while(true){	//constantly spin until user is done selecting all riders 
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 %>
-<table>
-
-<tr>
-    <th>USER NAME  		   </th>
-    <th>LeaderBoard Rank   </th>
-</tr>
 
 
 
+<form action="driver_int.jsp">
+<input type = "hidden" name ="ride_id" value = "<%=ride_id%>"/>
 
 
-</table>
 
+<h3>Here are users who want to go in your car. choose them</h3>
+<p>Hit refresh to see new ride requests from users</p>
+
+
+<%	
+	ArrayList<rideOffer> offers = rideObj.getOffers(ride_id);
+	for(rideOffer ro : offers){
+		String username = LoginObject.getUserName(ro.user_id);
+%>
+
+<input type="checkbox" name="requests" value=<%=ro.requestID%>><%=username %> <br>
+
+
+		
+		
 <%
 }
 %>
 
+
+
+<input type="submit">
+</form>
+
+
+	    <!-- 
+	    	After acceptance,go to intermediate page. here its should
+	    		1) change status of ride request to accepted.
+	    		2) make all other requests to denied
+	    		3) pass it all users who are driving with car
+	    		4) go to driving page
+	    			where it chooses an ad and displays it
+	    				ad seen goes up. 
+	    				users revenue goes up.
+	     -->
 
 
 </body>

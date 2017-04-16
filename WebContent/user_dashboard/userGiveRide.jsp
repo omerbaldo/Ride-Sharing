@@ -47,7 +47,7 @@ if(cars.size() ==0){
 %>
 
 
-<form action = "rides/rideGiving.jsp">
+<form action = "rides/rideGivingINT.jsp">
 	 Pickup 
 	 <select name="pickup">
 	    <option value="busch">Busch</option>
@@ -90,9 +90,8 @@ if(cars.size() ==0){
 	  <input type="radio" name="offer" value="no"> No <br>
 	 </br>
 	  
-	  <label> If yes, then how often? </label>
+	  <label> If yes, then how often? (note: this will create rides for the next 3 months)</label>
 	  </br>
-	  <input type="radio" name="often" value="Daily"> Daily <br>
 	  <input type="radio" name="often" value="Weekly"> Weekly <br>
 	  <input type="radio" name="often" value="Monthly"> Monthly <br>
 	    </br>

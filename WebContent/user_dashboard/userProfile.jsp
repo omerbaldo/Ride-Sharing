@@ -3,6 +3,10 @@
 <%@ page import="cs336Final.LoginObject"%>
 <%@ page import="cs336Final.RiderObject"%>
 <%@ page import="cs336Final.DriverObject"%>
+<%@ page import="cs336Final.rideObj"%>
+<%@ page import="cs336Final.rideObj.ride"%>
+<%@ page import="java.util.*"%>
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -52,6 +56,99 @@ DriverObject D = new DriverObject();
 
 	<!-- If the user is another user have option to message user -->
 	</br></br> <button> Message User! </button>
+
+
+
+
+<h4>Your rides</h4>
+<table>
+
+
+  <tr>
+    <th> Start Location </th>
+    <th> End Location</th>
+    <th> Start Time</th>
+    <th> End Time </th>
+    <th> Car </th>
+    <th> Status </th>
+    <th> Delete </th>
+    <th> Accept Ride Requests </th>
+  </tr>
+
+
+<%
+ArrayList<ride> rides = rideObj.findRidesOfUser(x.getUser_id());
+for(ride r : rides){
+%>
+  <tr>
+
+<td style="padding:0 15px 0 15px;" > <%= r.locations %></td>
+		<td style="padding:0 15px 0 15px;"><%= r.locatione %> </td>
+		<td style="padding:0 15px 0 15px;"><%= r.start %> </td>
+		<td style="padding:0 15px 0 15px;"><%= r.end %> </td>
+		<td style="padding:0 15px 0 15px;"><%= r.car %> </td>
+		<%
+			if(r.started.equals("0")){
+		
+		%>
+				<td style="padding:0 15px 0 15px;">hasn't started </td>
+		
+		<%
+			}
+			if(r.started.equals("1")){
+		
+		%>
+						<td style="padding:0 15px 0 15px;">ride started </td>
+		
+		<%
+			}
+		%>
+		
+		<td style="padding:0 15px 0 15px;">
+		
+			<form method = "post" action = "deleteRideINT.jsp">
+				<input type = "hidden" name ="rideid" value = "<%=r.ride_id %>"/>
+				<input type="submit" value="delete"> 
+			</form> 
+		
+		
+		
+		<% if(r.started.equals("0")){
+			
+		%>
+		</td>
+				<td style="padding:0 15px 0 15px;">
+		
+			<form method = "post" action = "chooseINT.jsp">
+				<input type = "hidden" name ="rideid" value = "<%=r.ride_id %>"/>
+				<input type="submit" value="choose"> 
+			</form> 
+		
+		</td>
+		<% 
+			}else{
+		%>
+		<td> already started, cant accept no more</td>
+		
+		
+		<%
+		} %>
+		
+</tr>
+
+<%
+}
+%>
+
+</table>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

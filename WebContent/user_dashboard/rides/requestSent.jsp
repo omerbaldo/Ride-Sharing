@@ -39,33 +39,8 @@
 
 
 
-<h1>Request Sent. Waiting for an acceptance</h1>
+<h1>Request Sent. Keep refreshing page for status of request</h1>
 
-
-
-<style>
-.loader {
-  border: 16px solid #f3f3f3;
-  border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
-  -webkit-animation: spin 2s linear infinite;
-  animation: spin 2s linear infinite;
-}
-
-@-webkit-keyframes spin {
-  0% { -webkit-transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); }
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-</style>
-
-<div class="loader"></div>
 
 
 
@@ -73,22 +48,30 @@
 
 
 <%
-//Login
-	session.setAttribute("user", (LoginObject) session.getAttribute("user"));
-	LoginObject x = (LoginObject) session.getAttribute("user");
+session.setAttribute("user", (LoginObject) session.getAttribute("user"));
+LoginObject x = (LoginObject) session.getAttribute("user");
+session.setAttribute("ride_id", (Integer) session.getAttribute("ride_id"));
 
-//Add to ride offering table
-	String ride_id = request.getParameter("rid");
-	int requestID = rideObj.makeRideRequest(ride_id, x.getUser_id());
-	System.out.println("request id is " + requestID);
-	
-
+		
+		
+Integer requestID = (Integer) session.getAttribute("requestID");
+		
 
 //Keep checking that rideId to see if accepted becomes true. if it does go forward. if not print denied
 
+
+if(rideObj.getStatus(requestID) == 1){
+		//redirect;
+	System.out.println("");
+	response.sendRedirect(request.getContextPath() + "/user_dashboard/rides/rideOccuring.jsp");
+
+}else if(rideObj.getStatus(requestID) == -1){
+
 %>
-
-
+<h3>Sorry, Ride has started and you haven't been chosen</h3>
+<%
+	}
+%>
 
 
 </body>

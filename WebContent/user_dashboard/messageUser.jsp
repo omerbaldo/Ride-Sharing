@@ -2,6 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ page import="cs336Final.LoginObject"%>
 <%@ page import="cs336Final.MessageObject"%>
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.Statement" %>
+<%@ page import="java.sql.Connection" %>
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.util.*" %>
     
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -76,6 +81,77 @@ if(To == null){
 		  <br>
 		  <input type="submit" value="Send">
 		</form> 
+		
+<br>
+<br>
+
+<h3>Inbox</h3>
+
+<!-- Form For Displaying all Inbox Emails  -->
+		<form method = 'post'>
+			
+			<table border="2">
+			   <tr>
+			        <td>FROM</td>
+			        <td>SUBJECT</td>
+			        <td>CONTENT</td>
+			        <td>DATE RECEIVED</td>
+			   </tr>
+			   <%
+			   try
+			   {
+			       Class.forName("com.mysql.jdbc.Driver");
+			       String url="jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			       String username="omerdeepcal";
+			       String password="wegotthis";
+			       int userid = x.getUser_id();
+			       String query="select * from `app`.`SEND_EMAIL`, `app`.`User` where SEND_EMAIL.To = " + userid + " and User.user_id = SEND_EMAIL.From";
+			       Connection conn=DriverManager.getConnection(url, username, password);
+			       Statement stmt=conn.createStatement();
+			       ResultSet rs=stmt.executeQuery(query);
+			       
+			      
+			       
+			       Deque<String> usq = new ArrayDeque<String>();
+			       Deque<String> subq = new ArrayDeque<String>();
+			       Deque<String> contq = new ArrayDeque<String>();
+			       Deque<String> dateq = new ArrayDeque<String>();
+			       
+			       while(rs.next())
+			       {
+			    	   usq.push(rs.getString("username"));
+			    	   subq.push(rs.getString("Subject"));
+			    	   contq.push(rs.getString("Content"));
+			    	   dateq.push(rs.getString("Date"));
+			       }
+			       
+			       
+			       while(usq.peek() != null)
+			       {
+			    	   
+			   %>
+			           <tr><td><%=usq.pop() %></td>
+			           <td><%=subq.pop() %></td>
+			           <td><%=contq.pop()%></td>
+			           <td><%=dateq.pop()%></td></tr>
+			
+			   <%
+			       }
+			   %>
+			   </table>
+			   <%
+			        rs.close();
+			        stmt.close();
+			        conn.close();
+			   }
+			   catch(Exception e)
+			   {
+			        e.printStackTrace();
+			   }
+			   %>
+			   
+		</form>
+
 
 
 

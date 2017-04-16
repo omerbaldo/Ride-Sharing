@@ -30,17 +30,6 @@
 <link rel="stylesheet" type="text/css" href="../user.css">
 
 
-
-
-
-
-
-
-
-
-
-
-
 <%
 session.setAttribute("user", (LoginObject) session.getAttribute("user"));
 LoginObject x = (LoginObject) session.getAttribute("user");
@@ -101,7 +90,7 @@ for ( int i =0; i < arrayrides.size(); i++){
 		
 		<td style="padding:0 15px 0 15px;">
 		
-				<form action = "requestSent.jsp">
+				<form action = "resquestSentINT.jsp">
 								<input type = "hidden" name ="rid" value = "<%=r.ride_id%>"/>
 								<button class="btn red" type="submit"> Request </button>
 				</form>	

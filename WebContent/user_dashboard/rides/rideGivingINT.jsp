@@ -6,6 +6,8 @@
 <%@ page import="cs336Final.LoginObject"%>
     <%@ page import="cs336Final.rideObj"%>
     <%@ page import="cs336Final.RiderObject"%>
+        <%@ page import="cs336Final.rideObj.rideOffer"%>
+    
         <%@ page import="cs336Final.DriverObject"%>
     
 	<%@ page import="java.util.*"%>
@@ -53,8 +55,48 @@ rideObj r = new rideObj();
 
 // Constantly spin waiting for ride requests to come in from a table. 
 
-%>
+String pickup = request.getParameter("pickup");
+String dest = request.getParameter("dest");
+String startTime = request.getParameter("startTime");
+String endTime = request.getParameter("endTime");
+String often = request.getParameter("offer");
+String car = request.getParameter("cars");
+System.out.println("car " + car);
 
+//System.out.println("often? " + often);
+
+int ride_id = 0;
+if(often.equals("yes")){
+	
+	 often = request.getParameter("often");
+	 if(often.equals("Weekly")){
+		 
+	 }else if(often.equals("Monthly")){
+		 
+	 }
+	 
+	 ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+	 
+}else{
+	ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often, car);
+}
+
+System.out.println("pickup " + pickup);
+System.out.println("dest " + pickup);
+System.out.println("starttime " + startTime);
+System.out.println("endtime " + endTime);
+
+//redirect and send rideID
+session.setAttribute("ride_id", (Integer) ride_id);
+
+
+
+
+	response.sendRedirect(request.getContextPath() + "/user_dashboard/rides/rideGiving.jsp");
+
+
+
+%>
 
 
 
