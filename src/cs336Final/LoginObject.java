@@ -1,5 +1,8 @@
 package cs336Final;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -256,10 +259,40 @@ public class LoginObject
 	public static void lock(String username, int active)
 	{
 		sql.upd("UPDATE app.User SET active='"+active+"' WHERE username='"+username+"'");
+		
+
 	}
 	public static void reset(String username)
 	{
-		sql.upd("UPDATE app.User SET password='password' WHERE username='"+username+"'");
+		//sql.upd("UPDATE app.User SET password='password' WHERE username='"+username+"'");
+		
+		
+		try
+		{
+			
+		
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//Create a connection to your DB
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			//Create a SQL statement
+			
+			PreparedStatement stmt = con.prepareStatement("UPDATE app.User SET password='password' WHERE username = ?");
+			
+			stmt.setString(1, username);
+	
+			stmt.executeUpdate();
+			
+			System.out.println("Prepared Statement Executed");
+			
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
 	}
 	
 	
