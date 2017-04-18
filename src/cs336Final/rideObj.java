@@ -180,47 +180,7 @@ public class rideObj {
 		
 	}
 	
-	public static Date convertStringToDateObj(String str){
-		String year = "";
-		int i;
-		for(i = 0; str.charAt(i) != '-';i++){
-			year += str.charAt(i);
-		}
-		i++;
 
-		String month = "";
-		int j = i;
-		for(; str.charAt(j) != '-';j++){
-			month += str.charAt(j);
-		}
-		j++;
-
-		String day = "";
-		int k = j;
-		for(; str.charAt(k) != 'T';k++){
-			day += str.charAt(k);
-		}
-		k++;
-		String hour = "";
-		hour += str.charAt(k);
-		hour += str.charAt(k+1);
-		
-		String minutes = "";
-		minutes += str.charAt(k+3);
-		minutes += str.charAt(k+4);
-		
-		Calendar myCal = Calendar.getInstance();
-
-		myCal.set(Calendar.YEAR, Integer.parseInt(year.trim()));
-		myCal.set(Calendar.MONTH, Integer.parseInt(month)-1);
-		myCal.set(Calendar.DAY_OF_MONTH, Integer.parseInt(day));
-		myCal.set(Calendar.HOUR_OF_DAY, Integer.parseInt(hour));
-		myCal.set(Calendar.MINUTE, Integer.parseInt(minutes));
-		
-		Date theDate = myCal.getTime();
-		
-		return theDate;
-	}
 	
 	
 	
