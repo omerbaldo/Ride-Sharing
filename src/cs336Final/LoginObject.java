@@ -258,7 +258,7 @@ public class LoginObject
 	}
 	public static void lock(String username, int active)
 	{
-		sql.upd("UPDATE app.User SET active='"+active+"' WHERE username='"+username+"'");
+		//sql.upd("UPDATE app.User SET active='"+active+"' WHERE username='"+username+"'");
 		
 		try
 		{
