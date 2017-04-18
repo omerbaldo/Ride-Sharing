@@ -73,6 +73,7 @@
 	  <span class = "th">Times Seen</span>
 	</div>
 <%
+
 ArrayList<AdObj> a = AdObj.getAdList();
 
 for (AdObj x: a)

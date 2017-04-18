@@ -123,11 +123,12 @@ public class AdObj
 			
 			for (AdObj x: ads)
 			{
-				if (x.getSeen() > serve.getSeen())
+				if (x.getSeen() < serve.getSeen())
 					serve = x;
 			}
 			
 			int nw = serve.getSeen() + 1;
+			
 			sql.upd("UPDATE app.Advertisement SET Num_Appearances="+Integer.toString(nw)+" WHERE Ad_Id="+serve.getId());
 			
 			return serve.getTitle();
