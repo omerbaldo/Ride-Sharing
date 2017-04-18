@@ -225,65 +225,7 @@ public class rideObj {
 	
 	
 	
-	public static ArrayList<ride> findRides(String start, String end, String date){
-		try
-		{
-			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
-			Statement stmt = con.createStatement();
-			
-			//Step 1. find all cars with locations similar
-			String str = "Select * From app.Ride R Where R.locationStart LIKE '%"
-					+ start
-					+ "%' and R.locationEnd LIKE '%"
-					+ end
-					+ "%'";
-					
-			System.out.println(str);
 
-			ResultSet rs = stmt.executeQuery(str);
-			
-			ArrayList<ride> ridesList = new ArrayList<ride>();
-			
-			while (rs.next()) {      //for each row in the table 
-				ride r = new ride();
-				for(int i = 1; i <= 9;i++) {
-					if(i==1){
-						r.ride_id = Integer.valueOf(rs.getString(i));
-					}else if(i==2){
-						r.start = rs.getString(i);
-					}else if(i==6){
-						r.uid = Integer.valueOf(rs.getString(i));
-					}else if(i==9){
-						r.car = rs.getString(i);
-					}
-		        }
-				//System.out.println("adding car " + r.car);
-				ridesList.add(r);
-			}
-
-
-			//query all results and now check for date
-			
-			for(int i = ridesList.size()-1;i>=0;i--){
-				ride c = ridesList.get(i);
-				Date after = convertStringToDateObj(date);
-				Date ride = convertStringToDateObj(c.start);
-				if(ride.before(after)){
-					ridesList.remove(i);
-				}
-			}
-			
-			
-			return ridesList;
-		}catch (Exception e){
-			System.out.println(e.toString());
-			return null;
-		}	
-		
-		
-	}
 	
 	public static boolean deleteToDB(int rideID){
 		return false;
