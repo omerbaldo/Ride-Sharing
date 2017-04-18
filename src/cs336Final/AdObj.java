@@ -127,7 +127,8 @@ public class AdObj
 					serve = x;
 			}
 			
-			sql.upd("UPDATE app.Advertisement SET Num_Appearances="+serve.getSeen()+1+" WHERE Ad_Id="+serve.getId());
+			int nw = serve.getSeen() + 1;
+			sql.upd("UPDATE app.Advertisement SET Num_Appearances="+Integer.toString(nw)+" WHERE Ad_Id="+serve.getId());
 			
 			return serve.getTitle();
 		}
