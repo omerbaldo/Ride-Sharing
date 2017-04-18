@@ -260,13 +260,38 @@ public class LoginObject
 	{
 		sql.upd("UPDATE app.User SET active='"+active+"' WHERE username='"+username+"'");
 		
+		try
+		{
+			
+		
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//Create a connection to your DB
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			//Create a SQL statement
+			
+			PreparedStatement stmt = con.prepareStatement("UPDATE app.User SET active = ? WHERE username = ?");
+			
+			stmt.setInt(1, active);
+			stmt.setString(2, username);
+	
+			stmt.executeUpdate();
+			
+			System.out.println("Prepared Statement Executed");
+			
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+		}
+		
 
 	}
 	public static void reset(String username)
 	{
-		//sql.upd("UPDATE app.User SET password='password' WHERE username='"+username+"'");
-		
-		
 		try
 		{
 			
