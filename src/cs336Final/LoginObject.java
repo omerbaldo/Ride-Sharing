@@ -165,10 +165,23 @@ public class LoginObject
 	{
 		try
 		{	
-			String str = "SELECT typeofuser FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
+			//String str = "SELECT typeofuser FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
 			//Run the query against the DB
+			
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//Create a connection to your DB
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			//Create a SQL statement
+			
+			PreparedStatement stmt = con.prepareStatement("SELECT typeofuser FROM app.User where password = ? and username = ?");
+			
+			stmt.setString(1, password);
+			stmt.setString(2, username);
 		
-			ResultSet result = sql.query(str).get();
+			ResultSet result = stmt.executeQuery();
 			result.next();
 			return result.getInt(1);
 			
