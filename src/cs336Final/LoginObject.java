@@ -214,6 +214,7 @@ public class LoginObject
 			stmt.setInt(1, uid);
 			ResultSet result = stmt.executeQuery();
 			
+			String name = null;
 			while(result.next())
 			{
 				name = result.getString(1);	
