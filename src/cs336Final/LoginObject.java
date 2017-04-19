@@ -196,25 +196,37 @@ public class LoginObject
 		
 	}
 	
-	public static String getUserName(int uid){
+	public static String getUserName(int uid)
+	{
 		
-		try{
-			String str = "SELECT username FROM app.User where user_id = " + uid;
-		
-			ResultSet result = sql.query(str).get();
-			String name = null;
-			while(result.next()){
-				name = result.getString(1);
-				// TODO Auto-generated catch block
+		try
+		{
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//Create a connection to your DB
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			//Create a SQL statement
+			
+			PreparedStatement stmt = con.prepareStatement("SELECT username FROM app.User where user_id = ?");
+			
+			stmt.setInt(1, uid);
+			ResultSet result = stmt.executeQuery();
+			
+			while(result.next())
+			{
+				name = result.getString(1);	
 			}
 			return name;
-		} catch (Exception e) {
+		} 
+		catch (Exception e) 
+		{
 				e.printStackTrace();
 				return null;
 		}
 		
 	}
-	
 	
 	
 	
