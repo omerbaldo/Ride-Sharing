@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 import com.mysql.jdbc.ResultSetMetaData;
@@ -13,9 +15,48 @@ import cs336Final.carObj.car;
 
 public class rideObj {
 
+	public static String convertDateToUTC(Date d){
+		
+		
+			//System.out.println("Starting the dates--------------");
+		    Calendar cal = Calendar.getInstance();
+		    cal.setTime(d);
+		    int year = cal.get(Calendar.YEAR);
+		    int month = cal.get(Calendar.MONTH);
+		    int day = cal.get(Calendar.DAY_OF_MONTH);
+	        SimpleDateFormat localDateFormat = new SimpleDateFormat("HH:mm:ss");
+	        String time = localDateFormat.format(d);
+
+	        
+		    //System.out.println("Year is " + year);
+		    //System.out.println("Month is " + month);
+		    //System.out.println("Day is " + day);
+		    //System.out.println("Time is " + time);
+			//System.out.println("--------------------------");
+
+			
+			String UTC = year+"-";
+			if(month<=9){
+				UTC = UTC + "0" + month;
+			}else{
+				UTC = UTC + month;
+			}
+			if(day<=9){
+				UTC = UTC + "-0" + day + "T" + time;
+			}else{
+				UTC = UTC + "-" + day + "T" + time;
+			}
+			
+			
+			
+			//System.out.println("UTC is " + UTC);
+		    return UTC;
+	}
 	
 	public static int addToDB(int userID, String from, String to, String locationfrom, String locationto, String regScheduled, String often, String car){
 
+		System.out.println();
+		
 		try
 		{
 			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
@@ -63,7 +104,176 @@ public class rideObj {
 	}
 	
 	
+	
+	
+	/*
+	Add ride to data base on a weekly basis for each week
 
+	algorithm, get the date string and add a week to it 
+*/
+public static int addToDBMonthly(int userID, String from, String to, String locationfrom, String locationto, String regScheduled, String often, String car){
+
+	try
+	{
+		String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+		//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+		Class.forName("com.mysql.jdbc.Driver");
+
+		//Create a connection to your DB
+		Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+		//Create a SQL statement
+		Statement stmt = con.createStatement();
+		
+		//4*3 is 12 weeks. 
+		Date startingDates[] = new Date[3];
+		Date endingDates[] = new Date[3];
+		for(int i = 0; i < 3; i++){
+			startingDates[i] = convertStringToDateObj(from);
+			endingDates[i] = convertStringToDateObj(to);
+		
+			//starting time
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(startingDates[i]);            
+			calendar.add(Calendar.DAY_OF_YEAR, (i+1)*30);
+			Date date = calendar.getTime();
+			startingDates[i] = date;
+			
+			//ending time
+			calendar.setTime(endingDates[i]);            
+			calendar.add(Calendar.DAY_OF_YEAR, (i+1)*30);
+			date = calendar.getTime();
+			endingDates[i] = date;	
+		}
+
+		String str = "";
+		for(int i = 0; i < 3; i++){
+			//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
+			str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started) VALUES ("
+					+ "\" " + convertDateToUTC(startingDates[i]) + "\", "
+					+ "\" " + convertDateToUTC(endingDates[i]) + "\", "
+					+ "\" " + regScheduled + "\", "
+					+ "0, "
+					+ userID + ", "
+					+ "\" " + locationfrom + "\", "
+					+ "\" " + locationto + "\", "
+					+ "\" " + car + "\""
+							+ ",0)";
+		
+			System.out.print(str);
+			//Run the query against the DB
+			int result = stmt.executeUpdate(str);
+		}
+		
+		
+		str = "SELECT MAX(ride_id) FROM app.Ride";
+		ResultSet rs = stmt.executeQuery(str);
+		int requestId = 0;
+		while(rs.next()){
+			requestId = Integer.parseInt(rs.getString(1));
+		}
+		return requestId;
+	}
+	
+	catch (Exception e)
+	{
+		System.out.println(e.toString());
+		return -1;
+	}
+}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+		Add ride to data base on a weekly basis for each week
+	
+		algorithm, get the date string and add a week to it 
+	*/
+	public static int addToDBWeekly(int userID, String from, String to, String locationfrom, String locationto, String regScheduled, String often, String car){
+
+		try
+		{
+			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
+			//Load JDBC driver - the interface standardizing the connection procedure. Look at WEB-INF\lib for a mysql connector jar file, otherwise it fails.
+			Class.forName("com.mysql.jdbc.Driver");
+
+			//Create a connection to your DB
+			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
+			//Create a SQL statement
+			Statement stmt = con.createStatement();
+			
+			//4*3 is 12 weeks. 
+			Date startingDates[] = new Date[12];
+			Date endingDates[] = new Date[12];
+			for(int i = 0; i < 12; i++){
+				startingDates[i] = convertStringToDateObj(from);
+				endingDates[i] = convertStringToDateObj(to);
+			
+				//starting time
+				Calendar calendar = Calendar.getInstance();
+				calendar.setTime(startingDates[i]);            
+				calendar.add(Calendar.DAY_OF_YEAR, (i+1)*7);
+				Date date = calendar.getTime();
+				startingDates[i] = date;
+				
+				//ending time
+				calendar.setTime(endingDates[i]);            
+				calendar.add(Calendar.DAY_OF_YEAR, (i+1)*7);
+				date = calendar.getTime();
+				endingDates[i] = date;	
+			}
+			
+			String stringStartingDates[] = new String[12];
+			String endingStartingDates[] = new String[12];
+			for(int i = 0; i < 12; i++){
+				stringStartingDates[i] = startingDates[i].toString();
+				endingStartingDates[i] = endingDates[i].toString();
+			}
+			String str = "";
+			for(int i = 0; i < 12; i++){
+				//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
+				str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started) VALUES ("
+						+ "\" " + convertDateToUTC(startingDates[i]) + "\", "
+						+ "\" " + convertDateToUTC(endingDates[i]) + "\", "
+						+ "\" " + regScheduled + "\", "
+						+ "0, "
+						+ userID + ", "
+						+ "\" " + locationfrom + "\", "
+						+ "\" " + locationto + "\", "
+						+ "\" " + car + "\""
+								+ ",0)";
+			
+				System.out.print(str);
+				//Run the query against the DB
+				int result = stmt.executeUpdate(str);
+			}
+			
+			
+			str = "SELECT MAX(ride_id) FROM app.Ride";
+			ResultSet rs = stmt.executeQuery(str);
+			int requestId = 0;
+			while(rs.next()){
+				requestId = Integer.parseInt(rs.getString(1));
+			}
+			convertDateToUTC(startingDates[0]);
+			return requestId;
+		}
+		
+		catch (Exception e)
+		{
+			System.out.println(e.toString());
+			return -1;
+		}
+	}
+	
 	
 	
 	

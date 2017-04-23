@@ -63,19 +63,26 @@ String car = request.getParameter("cars");
 System.out.println("car " + car);
 
 //System.out.println("often? " + often);
-
+boolean f = true;
 int ride_id = 0;
 if(often.equals("yes")){
 	
 	 often = request.getParameter("often");
 	 if(often.equals("Weekly")){
-		 
+		 System.out.println("adding weekly");
+		 ride_id = rideObj.addToDBWeekly(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+		 //redirect
+
+		 f = false;
 	 }else if(often.equals("Monthly")){
-		 
+		 ride_id = rideObj.addToDBMonthly(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+	 	 //redirect
+		f = false;
 	 }
+	 else{
 	 
-	 ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
-	 
+	 	ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+	 }
 }else{
 	ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often, car);
 }
@@ -90,9 +97,12 @@ session.setAttribute("ride_id", (Integer) ride_id);
 
 
 
-
+if(f==true){
 	response.sendRedirect(request.getContextPath() + "/user_dashboard/rides/rideGiving.jsp");
+}else{
+	response.sendRedirect(request.getContextPath() + "/user_dashboard/userProfile.jsp");
 
+}
 
 
 %>
