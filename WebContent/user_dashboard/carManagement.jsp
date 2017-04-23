@@ -18,7 +18,6 @@
   <form method ='post' action = "userProfile.jsp"><button class="tablinks">User Profile</button></form>
   <form method ='post' action = "userGiveRide.jsp">  <button class="tablinks">Give a Ride</button></form>
   <button class="tablinks" >Find a Ride</button>
-  <form method ='post' action = "userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
   <form method ='post' action = "carManagement.jsp"><button class="tablinks" id="selected">Cars</button></form>
 
   <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
@@ -102,7 +101,6 @@ if(Make==null){
 
 
 
-<form method = "post" action= "car_delete.jsp">
 
 <table>
   <tr>
@@ -122,13 +120,19 @@ if(Make==null){
 %>
 
 	<tr>
+	<form method = "post" action= "car_delete.jsp">
+
 		<td style="padding:0 15px 0 15px;" > <%= c.Lincense %></td>
 		<td style="padding:0 15px 0 15px;"><%= c.Make %> </td>
 		<td style="padding:0 15px 0 15px;"><%= c.Model %> </td>
 		<td style="padding:0 15px 0 15px;"><%= c.year %> </td>
 		<td style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span> Delete </span></button></td>
+	
+	
+	
 		<td><input type = "hidden" name ="uid" value = "<%=c.user_id%>"/></td>
 		<td><input type = "hidden" name ="lid" value = "<%=c.Lincense%>"/></td>
+	</form>
 		
 	</tr>
 	</br>
@@ -137,7 +141,6 @@ if(Make==null){
 }
 %>
 </table>
-</form>
 
 
 
