@@ -26,7 +26,6 @@ cs336Final.rideObj
   	<form method ='post' action = "user_dashboard/userProfile.jsp"><button class="tablinks">User Profile</button></form>
   	<button class="tablinks" id="selected">Give a Ride</button>
 	<form method ='post' action = "user_dashboard/userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
-	<form method ='post' action = "user_dashboard/userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
 	  <form method ='post' action = "user_dashboard/carManagement.jsp" id="selected"><button class="tablinks" >Cars</button></form>
 	<form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>

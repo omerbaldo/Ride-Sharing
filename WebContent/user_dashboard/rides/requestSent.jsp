@@ -18,7 +18,6 @@
 	  <button class="tablinks">User Profile</button>
 	  <form method ='post' action = "../userGiveRide.jsp"><button class="tablinks">Give a Ride</button></form>
 	    <button class="tablinks"  id="selected" >Find a ride </button>
-	  <form method ='post' action = "../userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
 	  <form method ='post' action = "../carManagement.jsp"><button class="tablinks" >Cars</button></form>
 	  <form method ='post' action = "../../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 	</div>

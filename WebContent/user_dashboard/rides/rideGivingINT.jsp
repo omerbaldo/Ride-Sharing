@@ -27,7 +27,6 @@
   	<form method ='post' action = "../userProfile.jsp"><button class="tablinks">User Profile</button></form>
   	<button class="tablinks" id="selected">Give a Ride</button>
 	<form method ='post' action = "../userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
-	<form method ='post' action = "../userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
 	  <form method ='post' action = "../carManagement.jsp" id="selected"><button class="tablinks" >Cars</button></form>
 	<form method ='post' action = "../../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
@@ -64,19 +63,26 @@ String car = request.getParameter("cars");
 System.out.println("car " + car);
 
 //System.out.println("often? " + often);
-
+boolean f = true;
 int ride_id = 0;
 if(often.equals("yes")){
 	
 	 often = request.getParameter("often");
 	 if(often.equals("Weekly")){
-		 
+		 System.out.println("adding weekly");
+		 ride_id = rideObj.addToDBWeekly(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+		 //redirect
+
+		 f = false;
 	 }else if(often.equals("Monthly")){
-		 
+		 ride_id = rideObj.addToDBMonthly(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+	 	 //redirect
+		f = false;
 	 }
+	 else{
 	 
-	 ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
-	 
+	 	ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "yes", often, car);
+	 }
 }else{
 	ride_id = rideObj.addToDB(x.getUser_id(), startTime, endTime, pickup, dest, "no", often, car);
 }
@@ -91,9 +97,12 @@ session.setAttribute("ride_id", (Integer) ride_id);
 
 
 
-
+if(f==true){
 	response.sendRedirect(request.getContextPath() + "/user_dashboard/rides/rideGiving.jsp");
+}else{
+	response.sendRedirect(request.getContextPath() + "/user_dashboard/userProfile.jsp");
 
+}
 
 
 %>
