@@ -11,15 +11,16 @@
 	<style>
 	
 	/* Style the tab */
-	div.tab {
+	div.tab2 {
 	    overflow: hidden;
 	    border: 1px solid #ccc;
-	    background-color: #f1f1f1;
+	    background-color: #BBDEFB;
+	    width: 600px;
 	}
 	
 	/* Style the buttons inside the tab */
-	div.tab button {
-	    background-color: inherit;
+	div.tab2 button {
+	    background-color:  #BBDEFB;
 	    float: left;
 	    border: none;
 	    outline: none;
@@ -29,13 +30,13 @@
 	}
 	
 	/* Change background color of buttons on hover */
-	div.tab button:hover {
-	    background-color: #ddd;
+	div.tab2 button:hover {
+	    background-color: #90CAF9;
 	}
 	
 	/* Create an active/current tablink class */
-	div.tab button.active {
-	    background-color: #ccc;
+	div.tab2 button.active {
+	    background-color: #64B5F6;
 	}
 	
 	/* Style the tab content */
@@ -44,6 +45,7 @@
 	    padding: 6px 12px;
 	    border: 1px solid #ccc;
 	    border-top: none;
+	    width: 600px;
 	}
 	
 	</style>
@@ -80,7 +82,7 @@
 	session.setAttribute("user", (LoginObject) session.getAttribute("user"));%>
 	
 <h2> Rides per Time Period </h2>
-<div class="tab">
+<div class="tab2">
   <button class="tablinks" onclick="openCity(event, 'day')">Day</button>
   <button class="tablinks" onclick="openCity(event, 'week')">Week</button>
   <button class="tablinks" onclick="openCity(event, 'month')">Month</button>
@@ -90,33 +92,52 @@
 </div>
 
 <div id="day" class="tabcontent">
-  <h3>Day</h3>
+  <h3>Total Rides by Day (10 Days)</h3>
   <p>London is the capital city of England.</p>
 </div>
 
 <div id="week" class="tabcontent">
-  <h3>Week</h3>
+  <h3>Total Rides by Week (10 Weeks)</h3>
   <p>Paris is the capital of France.</p> 
 </div>
 
 <div id="month" class="tabcontent">
-  <h3>Tokyo</h3>
+  <h3>Total Rides by Month (10 Months)</h3>
   <p>Tokyo is the capital of Japan.</p>
 </div>
 
 <div id="semester" class="tabcontent">
-  <h3>Tokyo</h3>
+  <h3>Total Rides by Semester (10 Semesters)</h3>
   <p>Tokyo is the capital of Japan.</p>
 </div>
 
 <div id="year" class="tabcontent">
-  <h3>Tokyo</h3>
+  <h3>Total Rides by Year (5 Years)</h3>
   <p>Tokyo is the capital of Japan.</p>
 </div>
 
 <div id="timeOfDay" class="tabcontent">
-  <h3>Tokyo</h3>
+  <h3>Total Rides by Time of Day (Monthly Avg)</h3>
   <p>Tokyo is the capital of Japan.</p>
+</div>
+
+
+<h2> Total Rides by User </h2>
+
+<h2> Total Rides per Location</h2>
+<div class="tab2">
+  <button class="tablinks" onclick="openCity(event, 'origin')">Origin</button>
+  <button class="tablinks" onclick="openCity(event, 'destination')">Destination</button>
+</div>
+
+<div id="origin" class="tabcontent">
+  <h3>Origin</h3>
+  <p>London is the capital city of England.</p>
+</div>
+
+<div id="destination" class="tabcontent">
+  <h3>Destination</h3>
+  <p>Paris is the capital of France.</p> 
 </div>
 	
 
