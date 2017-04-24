@@ -67,9 +67,17 @@ public class rideObj {
 			Connection con = DriverManager.getConnection(url, "omerdeepcal", "wegotthis");
 			//Create a SQL statement
 			Statement stmt = con.createStatement();
+			
+				Date d = convertStringToDateObj(to);
+			    Calendar cal = Calendar.getInstance();
+			    cal.setTime(d);
+			    int year = cal.get(Calendar.YEAR);
+			    int month = cal.get(Calendar.MONTH)+1;
+			    int day = cal.get(Calendar.DAY_OF_MONTH);
+			
 
 			//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-			String str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started) VALUES ("
+			String str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started,endYear,endMonth,endDay) VALUES ("
 					+ "\" " + from + "\", "
 					+ "\" " + to + "\", "
 					+ "\" " + regScheduled + "\", "
@@ -78,7 +86,10 @@ public class rideObj {
 					+ "\" " + locationfrom + "\", "
 					+ "\" " + locationto + "\", "
 					+ "\" " + car + "\""
-							+ ",0)";
+							+ ",0, "
+							+ year + ","
+							+ month + ","
+							+ day +")";
 		
 			System.out.print(str);
 			//Run the query against the DB
@@ -148,7 +159,20 @@ public static int addToDBMonthly(int userID, String from, String to, String loca
 		String str = "";
 		for(int i = 0; i < 3; i++){
 			//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-			str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started) VALUES ("
+			
+			
+			Date d = convertStringToDateObj(convertDateToUTC(startingDates[i]));
+		    Calendar cal = Calendar.getInstance();
+		    cal.setTime(d);
+		    int year = cal.get(Calendar.YEAR);
+		    int month = cal.get(Calendar.MONTH)+1;
+		    int day = cal.get(Calendar.DAY_OF_MONTH);
+		
+
+			
+			
+			
+			str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started,endYear,endMonth,endDay) VALUES ("
 					+ "\" " + convertDateToUTC(startingDates[i]) + "\", "
 					+ "\" " + convertDateToUTC(endingDates[i]) + "\", "
 					+ "\" " + regScheduled + "\", "
@@ -157,7 +181,10 @@ public static int addToDBMonthly(int userID, String from, String to, String loca
 					+ "\" " + locationfrom + "\", "
 					+ "\" " + locationto + "\", "
 					+ "\" " + car + "\""
-							+ ",0)";
+							+ ",0,"
+							+ year +","
+							+ month + ","
+							+ day + ")";
 		
 			System.out.print(str);
 			//Run the query against the DB
@@ -240,7 +267,19 @@ public static int addToDBMonthly(int userID, String from, String to, String loca
 			String str = "";
 			for(int i = 0; i < 12; i++){
 				//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-				str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started) VALUES ("
+
+				Date d = convertStringToDateObj(convertDateToUTC(startingDates[i]));
+			    Calendar cal = Calendar.getInstance();
+			    cal.setTime(d);
+			    int year = cal.get(Calendar.YEAR);
+			    int month = cal.get(Calendar.MONTH)+1;
+			    int day = cal.get(Calendar.DAY_OF_MONTH);
+			
+
+				
+				
+				
+				str = "INSERT INTO app.Ride (startTime, endTime, scheduled, rating, uid, locationStart, locationEnd,car,started,endYear,endMonth,endDay) VALUES ("
 						+ "\" " + convertDateToUTC(startingDates[i]) + "\", "
 						+ "\" " + convertDateToUTC(endingDates[i]) + "\", "
 						+ "\" " + regScheduled + "\", "
@@ -249,8 +288,10 @@ public static int addToDBMonthly(int userID, String from, String to, String loca
 						+ "\" " + locationfrom + "\", "
 						+ "\" " + locationto + "\", "
 						+ "\" " + car + "\""
-								+ ",0)";
-			
+								+ ",0,"
+								+ year +","
+								+ month + ","
+								+ day + ")";
 				System.out.print(str);
 				//Run the query against the DB
 				int result = stmt.executeUpdate(str);
