@@ -50,14 +50,22 @@ DriverObject D = new DriverObject();
 	
 	</br></br> Number of Given rides: <% out.print(D.amountOfRidesGiven(x)); %>
 	
-	</br></br> Reward points: <% out.print(D.amountOfRidesGiven(x)/R.amountOfRidesTaken(x)); %>
+	</br></br> Reward points: <% 
+	
+	if (R.amountOfRidesTaken(x)==0){
+		out.print(D.amountOfRidesGiven(x));
+	}else{
+		out.print(D.amountOfRidesGiven(x)/R.amountOfRidesTaken(x)); 
+	}
+	
+	
+	%>
 		<p>note: reward points determined by rides given / rides taken 
 			Click here to figure out how much money we will give each driver at the end of the terms!</p>
 			
 	<form action = "ad_distibution.jsp"><button>Find out!!</button></form>
-	
 	<!-- If the user is another user have option to message user -->
-	</br></br> <button> Message User! </button>
+	</br></br> <form action="messageUser.jsp" method ="post"><button> Message User! </button></form>
 
 
 
