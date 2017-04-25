@@ -744,5 +744,11 @@ public class rideObj {
 		
 		return x;
 	}
+	public static ResultSet ridesByUser()
+	{
+		ResultSet x = sql.query("SELECT username, ifnull(rides_taken,0)  from app.User x left join app.Rider y on x.user_id = y.uid").get();
+		
+		return x;
+	}
 
 }

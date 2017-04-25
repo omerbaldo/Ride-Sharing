@@ -372,7 +372,25 @@ h2 {
 	</div>
 
 
-	<h2>Total Rides by User</h2>
+	<h2>Total Rides Taken by User</h2>
+	<div class = "table">
+			<div class="tr">
+	  			<span class="th">User</span>
+	  			<span class = "th">Rides</span>
+			</div>
+			<%
+				ResultSet rides_taken = rideObj.ridesByUser();
+				while (rides_taken.next())
+				{
+			%>
+			<div class="tr">
+				<span class= "td"><%=rides_taken.getString(1) %></span>
+				<span class= "td"><%=rides_taken.getInt(2) %></span>
+			</div>
+			<%
+				}
+			%>
+	</div>
 
 	<h2>Total Rides per Location</h2>
 	<div class="tab2">
