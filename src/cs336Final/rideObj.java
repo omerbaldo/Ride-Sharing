@@ -726,5 +726,23 @@ public class rideObj {
 		return x;
 	}
 	
+	public static ResultSet getCountByFall()
+	{
+		ResultSet x = sql.query("SELECT count(*), endYear from app.Ride where endMonth >=8 and endMonth <= 12 group by endYear").get();
+		
+		return x;
+	}
+	public static ResultSet getCountBySpring()
+	{
+		ResultSet x = sql.query("SELECT count(*), endYear from app.Ride where endMonth >=1 and endMonth <= 6 group by endYear").get();
+		
+		return x;
+	}
+	public static ResultSet getCountByHour()
+	{
+		ResultSet x = sql.query("select count(*), HOUR(cast(startTime as datetime))  from app.Ride group by HOUR(cast(startTime as datetime))").get();
+		
+		return x;
+	}
 
 }

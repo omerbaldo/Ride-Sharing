@@ -138,7 +138,7 @@ h2 {
 	</div>
 
 	<div id="day" class="tabcontent">
-		<h3>Total Rides by Day (Past Month)</h3>
+		<h3>Total Rides by Day</h3>
 		<div class = "table">
 			<div class="tr">
 	  			<span class="th">Count</span>
@@ -286,8 +286,45 @@ h2 {
 	</div>
 
 	<div id="semester" class="tabcontent">
-		<h3>Total Rides by Semester (10 Semesters)</h3>
-		<p>Tokyo is the capital of Japan.</p>
+		<h3>Total Rides by Fall Semester Per Year</h3>
+		<div class = "table">
+			<div class="tr">
+	  			<span class="th">Count</span>
+	  			<span class = "th">Year</span>
+			</div>
+			<%
+				ResultSet fall = rideObj.getCountByFall();
+				while (fall.next())
+				{
+			%>
+			<div class="tr">
+				<span class= "td"><%=fall.getInt(1) %></span>
+				<span class= "td"><%=fall.getInt(2) %></span>
+			</div>
+			<%
+				}
+			%>
+		</div>
+		
+		<h3>Total Rides by Fall Semester Per Year</h3>
+		<div class = "table">
+			<div class="tr">
+	  			<span class="th">Count</span>
+	  			<span class = "th">Year</span>
+			</div>
+			<%
+				ResultSet spring = rideObj.getCountBySpring();
+				while (spring.next())
+				{
+			%>
+			<div class="tr">
+				<span class= "td"><%=spring.getInt(1) %></span>
+				<span class= "td"><%=spring.getInt(2) %></span>
+			</div>
+			<%
+				}
+			%>
+		</div>
 	</div>
 
 	<div id="year" class="tabcontent">
@@ -313,8 +350,25 @@ h2 {
 	</div>
 
 	<div id="timeOfDay" class="tabcontent">
-		<h3>Total Rides by Time of Day (Monthly Avg)</h3>
-		<p>Tokyo is the capital of Japan.</p>
+	<h3>Count by Hour</h3>
+		<div class = "table">
+			<div class="tr">
+	  			<span class="th">Count</span>
+	  			<span class = "th">Hour</span>
+			</div>
+			<%
+				ResultSet time = rideObj.getCountByHour();
+				while (time.next())
+				{
+			%>
+			<div class="tr">
+				<span class= "td"><%=time.getInt(1) %></span>
+				<span class= "td"><%=time.getInt(2) %></span>
+			</div>
+			<%
+				}
+			%>
+		</div>
 	</div>
 
 
