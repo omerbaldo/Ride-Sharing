@@ -750,5 +750,11 @@ public class rideObj {
 		
 		return x;
 	}
+	public static ResultSet ridesByDriver()
+	{
+		ResultSet x = sql.query("SELECT username, count(uid)  from app.User x left join app.Ride y on x.user_id = y.uid group by user_id").get();
+		
+		return x;
+	}
 
 }
