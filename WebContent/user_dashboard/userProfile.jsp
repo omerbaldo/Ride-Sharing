@@ -15,10 +15,11 @@
 	<title>User profile</title>
 
 <div class="tab">
-  <button class="tablinks" id="selected">User Profile</button>
+  <form method ='post' action = "userProfile.jsp"><button class="tablinks" id="selected">User Profile</button></form>
   <form method ='post' action = "userGiveRide.jsp"><button class="tablinks">Give a Ride</button></form>
   <form method ='post' action = "userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
   <form method ='post' action = "carManagement.jsp"><button class="tablinks" >Cars</button></form>
+  <form method ='post' action = "userLeaderboard.jsp"><button class="tablinks">Leaderboard</button></form>
   <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 
@@ -43,16 +44,18 @@ DriverObject D = new DriverObject();
 
 	<h1> Stats </h1>
 	
-	</br></br> Username :  <% out.print(x.getUsername()); %>
+	</br></br> Username:  <% out.print(x.getUsername()); %>
 		
-	</br></br> Number of Taken rides   <% out.print(R.amountOfRidesTaken(x)); %>
+	</br></br> Number of Taken rides:   <% out.print(R.amountOfRidesTaken(x)); %>
 	
-	</br></br> Number of Given rides <% out.print(D.amountOfRidesGiven(x)); %>
+	</br></br> Number of Given rides: <% out.print(D.amountOfRidesGiven(x)); %>
 	
-	</br></br> Reward points
+	</br></br> Reward points: <% out.print(D.amountOfRidesGiven(x)/R.amountOfRidesTaken(x)); %>
+		<p>note: reward points determined by rides given / rides taken 
+			Click here to figure out how much money we will give each driver at the end of the terms!</p>
+			
+	<form action = "ad_distibution.jsp"><button>Find out!!</button></form>
 	
-	</br></br> Leaderboard Rank
-
 	<!-- If the user is another user have option to message user -->
 	</br></br> <button> Message User! </button>
 

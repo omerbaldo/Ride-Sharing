@@ -101,7 +101,6 @@ if(f==true){
 	response.sendRedirect(request.getContextPath() + "/user_dashboard/rides/rideGiving.jsp");
 }else{
 	response.sendRedirect(request.getContextPath() + "/user_dashboard/userProfile.jsp");
-
 }
 
 

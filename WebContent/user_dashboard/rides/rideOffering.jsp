@@ -24,6 +24,8 @@
     <button class="tablinks"  id="selected" >Find a ride </button>
   <form method ='post' action = "../carManagement.jsp"><button class="tablinks" >Cars</button></form>
   <form method ='post' action = "../../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
+  <form method ='post' action = "../userLeaderboard.jsp"><button class="tablinks">Leaderboard</button></form>
+
 </div>
 
 <link rel="stylesheet" type="text/css" href="../user.css">
