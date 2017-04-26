@@ -305,7 +305,7 @@ public class rideObj {
 		return theDate;
 	}
 
-	public static ArrayList<ride> findRides(String start, String end, String date) {
+	public static ArrayList<ride> findRides(String startLocation, String endLocation, String date) {
 		try {
 			String url = "jdbc:mysql://cs336dbinstance.cxvvrbjkmr4a.us-west-2.rds.amazonaws.com:3306";
 			Class.forName("com.mysql.jdbc.Driver");
@@ -313,8 +313,8 @@ public class rideObj {
 			Statement stmt = con.createStatement();
 
 			// Step 1. find all cars with locations similar
-			String str = "Select * From app.Ride R Where R.locationStart LIKE '%" + start
-					+ "%' and R.locationEnd LIKE '%" + end + "%'";
+			String str = "Select * From app.Ride R Where R.locationStart LIKE '%" + startLocation
+					+ "%' and R.locationEnd LIKE '%" + endLocation + "%'";
 
 			System.out.println(str);
 
@@ -329,7 +329,9 @@ public class rideObj {
 						r.ride_id = Integer.valueOf(rs.getString(i));
 					} else if (i == 2) {
 						r.start = rs.getString(i);
-					} else if (i == 6) {
+					} else if (i==3){ 
+						r.end = rs.getString(i);
+					}else if (i == 6) {
 						r.uid = Integer.valueOf(rs.getString(i));
 					} else if (i == 9) {
 						r.car = rs.getString(i);
@@ -339,13 +341,18 @@ public class rideObj {
 				ridesList.add(r);
 			}
 
+			
+			//r.end
+			
+			
 			// query all results and now check for date
 
 			for (int i = ridesList.size() - 1; i >= 0; i--) {
 				ride c = ridesList.get(i);
-				Date after = convertStringToDateObj(date);
-				Date ride = convertStringToDateObj(c.start);
-				if (ride.before(after)) {
+				Date rideStartTime = convertStringToDateObj(c.start);
+				Date rideEndTime = convertStringToDateObj(c.end);
+				Date search = convertStringToDateObj(date);
+				if (!(rideStartTime.before(search) && rideEndTime.after(search))) {
 					ridesList.remove(i);
 				}
 			}
