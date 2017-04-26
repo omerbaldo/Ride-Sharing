@@ -65,7 +65,8 @@
 		}
 	}
 	
-	
+	con.close();
+
 	
 	//redirect to a comment finalization page
 	

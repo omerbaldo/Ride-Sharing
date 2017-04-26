@@ -28,7 +28,8 @@ public class sql
 			ResultSet result = stmt.executeQuery(q);
 			
 			o = Optional.ofNullable(result);
-			
+			con.close();
+
 			return o;
 			
 		}
@@ -57,7 +58,8 @@ public class sql
 	
 			//Run the query against the DB
 			int result = stmt.executeUpdate(q);
-			
+			con.close();
+
 			return result;
 
 			

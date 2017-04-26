@@ -39,7 +39,8 @@ public class MessageObject {
 			      updatemsgs.setString(5, Date);
 
 			      updatemsgs.executeUpdate();
-		
+					con.close();
+
 			return true;
 		}
 		

@@ -68,6 +68,8 @@ public class loginClass
 			String phone = result.getString(7);
 			int age = result.getInt(8);
 			int x = result.getInt(9);
+			con.close();
+
 			return new LoginObject(a, b , n , p , e , add, phone, age, x);
 			
 			
@@ -116,6 +118,8 @@ public class loginClass
 		
 			ResultSet result = stmt.executeQuery();
 			result.next();
+			con.close();
+
 			return result.getInt(1);
 			
 		}

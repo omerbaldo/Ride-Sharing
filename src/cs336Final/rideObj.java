@@ -88,6 +88,7 @@ public class rideObj {
 				requestId = Integer.parseInt(rs.getString(1));
 			}
 
+			con.close();
 			return requestId;
 		}
 
@@ -167,6 +168,8 @@ public class rideObj {
 			while (rs.next()) {
 				requestId = Integer.parseInt(rs.getString(1));
 			}
+			con.close();
+
 			return requestId;
 		}
 
@@ -252,6 +255,8 @@ public class rideObj {
 				requestId = Integer.parseInt(rs.getString(1));
 			}
 			convertDateToUTC(startingDates[0]);
+			con.close();
+
 			return requestId;
 		}
 
@@ -347,6 +352,7 @@ public class rideObj {
 					ridesList.remove(i);
 				}
 			}
+			con.close();
 
 			return ridesList;
 		} catch (Exception e) {
@@ -396,6 +402,8 @@ public class rideObj {
 
 				requestId = Integer.parseInt(rs.getString(1));
 			}
+			con.close();
+
 			return requestId;
 		}
 
@@ -440,6 +448,8 @@ public class rideObj {
 				rideOfferList.add(ro);
 				System.out.println("adding + " + ro.requestID);
 			}
+			con.close();
+
 			return rideOfferList;
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -476,6 +486,8 @@ public class rideObj {
 				str = "UPDATE app.rideRequest SET accepted = 1  WHERE ride_offer = " + requestIDs[i];
 				stmt.executeUpdate(str);
 			}
+			con.close();
+
 		} catch (Exception e) {
 
 		}
@@ -500,6 +512,8 @@ public class rideObj {
 			while (st.next()) {
 				status = Integer.parseInt(st.getString(1));
 			}
+			con.close();
+
 			return status;
 
 		} catch (Exception e) {
@@ -560,6 +574,7 @@ public class rideObj {
 				// System.out.println("adding car " + r.car);
 				ridesList.add(r);
 			}
+			con.close();
 
 			return ridesList;
 		} catch (Exception e) {
@@ -585,6 +600,8 @@ public class rideObj {
 			String str = "DELETE FROM app.Ride WHERE ride_id = " + rideID;
 			stmt.execute(str);
 			System.out.println(str);
+			con.close();
+
 		} catch (Exception e) {
 		}
 	}
@@ -612,6 +629,8 @@ public class rideObj {
 			if (count == 1) {
 				return true;
 			}
+			con.close();
+
 			return false;
 
 		} catch (Exception e) {
@@ -638,6 +657,8 @@ public class rideObj {
 				System.out.println("user " + i + " is a requester for ride " + rideID);
 				ids.add(i);
 			}
+			con.close();
+
 			return ids;
 		} catch (Exception e) {
 		}
