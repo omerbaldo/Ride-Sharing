@@ -20,6 +20,9 @@
   <form method ='post' action = "userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
   <form method ='post' action = "carManagement.jsp"><button class="tablinks" >Cars</button></form>
   <form method ='post' action = "userLeaderboard.jsp"><button class="tablinks">Leaderboard</button></form>
+  <form method ='post' action = "messageUser.jsp"><button class="tablinks">Message User</button></form>
+
+
   <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
 
@@ -65,7 +68,6 @@ DriverObject D = new DriverObject();
 			
 	<form action = "ad_distibution.jsp"><button>Find out!!</button></form>
 	<!-- If the user is another user have option to message user -->
-	</br></br> <form action="messageUser.jsp" method ="post"><button> Message User! </button></form>
 
 
 

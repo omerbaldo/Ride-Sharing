@@ -18,12 +18,16 @@
 <body>
 
 <div class="tab">
-  <button class="tablinks" id="selected">User Profile</button>
+  <form method ='post' action = "userProfile.jsp"><button class="tablinks">User Profile</button></form>
   <form method ='post' action = "userGiveRide.jsp"><button class="tablinks">Give a Ride</button></form>
   <form method ='post' action = "userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
-  <form method ='post' action = "userCalendar.jsp"><button class="tablinks" >Calendar</button></form>
   <form method ='post' action = "carManagement.jsp"><button class="tablinks" >Cars</button></form>
+  <form method ='post' action = "userLeaderboard.jsp"><button class="tablinks">Leaderboard</button></form>
+
+  <form method ='post' action = "messageUser.jsp"><button class="tablinks" id="selected">Message User</button></form>
+
   <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
+
 </div>
 
 <link rel="stylesheet" type="text/css" href="user.css">
@@ -68,7 +72,23 @@ if(To == null){
 <!-- Form For Sending a New Email  -->
 		<form method ='post' action="messageUser.jsp">
 		  To (Enter User ID): <br>
-		  <input type="text" name="To">
+		  
+		  <% 
+		  	String To_ID = request.getParameter("To_ID");
+		  	if (To_ID != null){
+		  
+		  
+		  %>
+		  
+		  <input type="text" value = "<%=To_ID%>" name="To">
+		  
+		  <%
+		  	}else{
+		  %>
+		  		  <input type="text" name="To">
+		  
+		  <%} %>
+		  
 		  <br>
 		  Subject: <br>
 		  <input type="text" name="Subject">

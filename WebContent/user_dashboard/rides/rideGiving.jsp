@@ -32,6 +32,7 @@
 	<form method ='post' action = "../userFindRide.jsp"><button class="tablinks">Find a Ride</button></form>
 	  <form method ='post' action = "../carManagement.jsp" id="selected"><button class="tablinks" >Cars</button></form>
   <form method ='post' action = "../userLeaderboard.jsp"><button class="tablinks">Leaderboard</button></form>
+  <form method ='post' action = "../messageUser.jsp"><button class="tablinks">Message User</button></form>
 
 	<form method ='post' action = "../../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
 </div>
@@ -69,6 +70,8 @@ System.out.println("ride id is " + ride_id);
 
 <h3>Here are users who want to go in your car. choose them</h3>
 <p>Hit refresh to see new ride requests from users</p>
+<p>To message the user, get their id and go to the message user tab </p>
+
 
 
 <%	
@@ -77,8 +80,8 @@ System.out.println("ride id is " + ride_id);
 		String username = LoginObject.getUserName(ro.user_id);
 %>
 
-<input type="checkbox" name="requests" value=<%=ro.requestID%>><%=username %> <br>
-
+<input type="checkbox" name="requests" value=<%=ro.requestID%>><%=username %> ID: <%=ro.user_id %>  <br>
+<p> </p>
 
 		
 		

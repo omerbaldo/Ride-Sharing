@@ -10,6 +10,18 @@ public class registrationClass
 {
 	public static boolean register (String username, String password, String email, String phone, String address)
 	{
+		String split_second = email.substring(email.indexOf("@")+1);
+
+		System.out.println("domain is " + split_second);
+		
+		//check if email is Rutger's email
+		if(!(split_second.equalsIgnoreCase("rutgers.edu")|| split_second.equalsIgnoreCase("scarletmail.rutgers.edu")||split_second.equalsIgnoreCase("cs.rutgers.edu"))){
+			return false;
+		}
+			
+			
+	
+		
 		try
 		{
 			
