@@ -14,7 +14,6 @@ public class loginClass
 		{	String str = "SELECT user_id FROM app.User where password = '"+password.trim() +"' and username = '"+username.trim()+"'";
 			//Run the query against the DB
 		
-			
 			ResultSet result = sql.query(str).get();
 			
 			

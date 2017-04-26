@@ -9,6 +9,8 @@
     <%@ page import="cs336Final.LoginObject"%>
     
     <%@ page import="java.util.*"%>
+        <%@ page import="cs336Final.RiderObject"%>
+    
     
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -39,7 +41,7 @@ String pickup = request.getParameter("pickup");
 String dest = request.getParameter("dest");
 String startTime = request.getParameter("startTime");
 ArrayList<ride> arrayrides = rideObj.findRides(pickup, dest, startTime);
-
+RiderObject.addRider(x);
 
 /* Matching locations
 SELECT *
