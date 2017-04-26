@@ -76,6 +76,7 @@ public class DriverObject {
 				System.out.println("query is " + queryDriver);
 				
 				stmt.executeUpdate(queryDriver);
+				con.close();
 				return true;
 			}
 
@@ -87,7 +88,7 @@ public class DriverObject {
 			System.out.print(str);
 			//Run the query against the DB
 			int result = stmt.executeUpdate(str);
-			
+			con.close();
 		
 			return true;
 		}
