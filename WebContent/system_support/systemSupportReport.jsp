@@ -46,8 +46,8 @@
 </head>
 <div class="tab">
   <form method = "post" action = "systemSupportDashboard.jsp"><button class="tablinks">Dashboard</button></form>
-  <button class="tablinks" id = "selected">Ad Manager</button>
-  <form method ='post' action = "systemSupportReport.jsp"> <button class="tablinks">Ad Report</button></form>
+  <form method ='post' action = "systemSupportAd.jsp"> <button class="tablinks">Ad Manager</button></form>
+  <button class="tablinks" id = "selected">Ad Report</button>
   <form method ='post' action = "systemSupportUserManager.jsp"> <button class="tablinks">User Manager</button></form>
   <form method = 'post' action = "systemSupportResetPassword.jsp"> <button class="tablinks">Reset Users</button></form>
   <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
@@ -56,23 +56,12 @@
 	<%
 	session.setAttribute("user", (LoginObject) session.getAttribute("user"));%>
 	
-	<form class = "table" method="post" action="addAd.jsp">
-		<br><br>
-  		<div class="tr">
-  			<span class="td"><h2 style="text-align:right;">Ad Title</h2></span>
-    		<span class="td"><input type="text" name="adTitle"><span class="highlight"></span><span class="bar"></span></span>
-    	 	<span class="td"><button  type="submit" class="btn blue">
-    			<span>Create Ad</span>
- 			</button></span>
-  		</div>
-		<br><br>
-	</form>
 	
 	<h1> Active Ad List</h1>
-<div class = "table">
+	<div class = "table">
 	<div class="tr">
 	  <span class="th">Ad Title</span>
-	  <span class = "th">Times Seen</span>
+	  <span class = "th">Amount to Pay Out</span>
 	</div>
 <%
 
@@ -82,12 +71,11 @@ for (AdObj x: a)
 {
 		
 %>
-	<form class = "tr" method = "post" action = "deleteAd.jsp">
+	<div class = "tr">
 		<span class="td" style="padding:0 15px 0 15px;" > <%=x.getTitle()%></span>
-		<span class="td" style="padding:0 15px 0 15px;"><%=x.getSeen()%> </span>
-		<span class = "td" style="padding:0 15px 0 15px;"><button class="btn red" type="submit"><span>Delete</span></button></span>
-		<span class = "td"><input type = "hidden" name ="delId" value = "<%=x.getId()%>"/></span>
-	</form>
+		<span class="td" style="padding:0 15px 0 15px;">$<%=2*x.getSeen()%> </span>
+
+	</div>
 
 <%       
 }
