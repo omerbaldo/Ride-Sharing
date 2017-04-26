@@ -100,7 +100,6 @@ public class AdObj
 			
 		}
 		
-		sql.upd(q);
 		
 	}
 	public static void deleteAd(int id)
