@@ -8,7 +8,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-import com.mysql.jdbc.ResultSetMetaData;
 
 import cs336Final.carObj.car;
 
@@ -746,13 +745,13 @@ public class rideObj {
 	}
 	public static ResultSet ridesByUser()
 	{
-		ResultSet x = sql.query("SELECT username, ifnull(rides_taken,0)  from app.User x left join app.Rider y on x.user_id = y.uid").get();
+		ResultSet x = sql.query("SELECT username, ifnull(rides_taken,0)  from app.User x left join app.Rider y on x.user_id = y.uid WHERE typeofuser = 3").get();
 		
 		return x;
 	}
 	public static ResultSet ridesByDriver()
 	{
-		ResultSet x = sql.query("SELECT username, count(uid)  from app.User x left join app.Ride y on x.user_id = y.uid group by user_id").get();
+		ResultSet x = sql.query("SELECT username, count(uid)  from app.User x left join app.Ride y on x.user_id = y.uid WHERE typeofuser = 3 group by user_id").get();
 		
 		return x;
 	}
