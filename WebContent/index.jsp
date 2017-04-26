@@ -9,14 +9,15 @@
 	</head>
 	<body>
 
-			<h3>Ride sharing</h3>
+			<h2>Group 5 Ride Sharing Project, CS336 Spring 2017</h2>
+			<h3>Done by Omer Baldo (OB), Calin Gilan (CG), and Deep Kotadia (DK)</h3><br>
 	
 			<p>Have an account?</p>
 		
 			<form method="get" action="Login.jsp" enctype=text/plain>
 	
 			  <input type="submit" value="Login in here" />
-			</form>
+			</form><br>
 			
 	
 			<p>Don't have an account?</p>
