@@ -46,6 +46,7 @@
 <div class="tab">
   <form method ='post' action = "systemSupportDashboard.jsp"><button class="tablinks">Dashboard</button></form>
   <form method = 'post' action = "systemSupportAd.jsp"> <button class="tablinks">Ad Manager</button></form>
+  <form method ='post' action = "systemSupportReport.jsp"> <button class="tablinks">Ad Report</button></form>
   <button class="tablinks"  id="selected">User Manager</button>
   <form method = 'post' action = "systemSupportResetPassword.jsp"> <button class="tablinks">Reset Users</button></form>
   <form method ='post' action = "../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>

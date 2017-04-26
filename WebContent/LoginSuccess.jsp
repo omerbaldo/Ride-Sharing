@@ -27,16 +27,12 @@
 		
 		if (res && u!= null)
 		{
+			System.out.println(u.getUserType());
 			if(u.getActive() == 0)
 				out.print("<h1>User Banned<h1>");
 			else if (u.getUserType() == 1)
 			{
 			
-				/*
-				request.setAttribute("user" , u );
-				request.getHeader("POOOP");
-				request.getRequestDispatcher("/adminDashboard.jsp").forward(request, response);
-				*/
 			
 				session.setAttribute("user", u);
 				response.sendRedirect(request.getContextPath() + "/adminDashboard.jsp");
