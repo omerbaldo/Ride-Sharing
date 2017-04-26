@@ -77,7 +77,7 @@ public class carObj {
 			String UID = Integer.toString(user.getUser_id());
 			 
 			//Populate SQL statement with an actual query. It returns a single number. The number of beers in the DB.
-			String str = "Select * From app.Car Where UID = 1";	
+			String str = "Select * From app.Car Where UID = " + user.getUser_id();	
 			System.out.print(str);
 			//Run the query against the DB
 			ResultSet rs = stmt.executeQuery(str);
