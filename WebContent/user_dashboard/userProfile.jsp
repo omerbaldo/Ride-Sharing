@@ -43,20 +43,15 @@ LoginObject x = (LoginObject) session.getAttribute("user");
 RiderObject R = new RiderObject();
 DriverObject D = new DriverObject();
 %>
-<!-- 
-
-
- -->
+<!--  -->
 
 	<h1> Stats </h1>
 	
 	</br></br> Username:  <% out.print(x.getUsername()); %>
 		
-	</br></br> Number of Total Taken rides:   <% out.print(R.amountOfRidesTaken(x)); %>
+	</br></br> Number of Taken rides:   <% out.print(R.amountOfRidesTaken(x)); %>
 	
-	</br></br> Number of Total Given rides: <% out.print(D.amountOfRidesGiven(x)); %>
-	
-	</br></br> Click here to figure out how many rides you have given/taken per month and semester
+	</br></br> Number of Given rides: <% out.print(D.amountOfRidesGiven(x)); %>
 	
 	</br></br> Reward points: <% 
 	

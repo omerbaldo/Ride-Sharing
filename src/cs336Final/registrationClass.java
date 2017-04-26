@@ -46,8 +46,7 @@ public class registrationClass
 			stmt.setInt(8, 1);
 	
 			stmt.executeUpdate();
-			con.close();
-
+				
 			return true;
 		}
 		
@@ -85,8 +84,7 @@ public class registrationClass
 			stmt.setInt(8, 1);
 	
 			stmt.executeUpdate();
-			con.close();
-	
+				
 			return true;
 		}
 		

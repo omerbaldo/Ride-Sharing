@@ -90,8 +90,7 @@ public class AdObj
 			stmt.setInt(1, 0);
 			stmt.setString(2, title);	
 			stmt.executeUpdate();
-			con.close();
-
+				
 		}
 		
 		catch (Exception e)
@@ -101,7 +100,6 @@ public class AdObj
 		}
 		
 		sql.upd(q);
-
 		
 	}
 	public static void deleteAd(int id)

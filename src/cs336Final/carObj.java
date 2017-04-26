@@ -41,8 +41,7 @@ public class carObj {
 			//Run the query against the DB
 			int result = stmt.executeUpdate(str);
 			
-			con.close();
-
+		
 			return true;
 		}
 		
@@ -51,6 +50,7 @@ public class carObj {
 			System.out.println(e.toString());
 			return false;
 		}
+		
 	}
 	
 	
@@ -100,8 +100,6 @@ public class carObj {
 		        }
 				al.add(c);
 			}
-			con.close();
-
 			return al;
 		}
 		
@@ -126,8 +124,6 @@ public class carObj {
 			boolean rs = stmt.execute(str);
 			System.out.println(str);
 			System.out.println(rs);
-			con.close();
-
 			return rs;
 		}
 		catch (Exception e)
@@ -181,8 +177,6 @@ public class carObj {
 		        }
 				al.add(c);
 			}
-			con.close();
-
 			return al.get(0);
 		}
 		

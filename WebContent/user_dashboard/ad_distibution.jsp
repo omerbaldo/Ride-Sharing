@@ -82,8 +82,7 @@ try{
 %>
 	Thus we have <% out.println(total_ad_rev); %> $ in total ad revenue. 
 	Split between <% out.println(totaldrivers); %>  drivers is <% out.println(split);%> $ per driver at the end of this term. 
-<%			 			con.close();
-
+<%			 
 		}catch(Exception e){
 			e.printStackTrace();
 		}

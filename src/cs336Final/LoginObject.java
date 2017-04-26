@@ -149,8 +149,7 @@ public class LoginObject
 			String phone = result.getString(7);
 			int age = result.getInt(8);
 			int x = result.getInt(9);
-			con.close();
-
+			
 			return new LoginObject(a, b , n , p , e , add, phone, age, x);
 			
 			
@@ -198,8 +197,6 @@ public class LoginObject
 		
 			ResultSet result = stmt.executeQuery();
 			result.next();
-			con.close();
-
 			return result.getInt(1);
 			
 		}
@@ -249,8 +246,6 @@ public class LoginObject
 			{
 				name = result.getString(1);	
 			}
-			con.close();
-
 			return name;
 		} 
 		catch (Exception e) 
@@ -321,8 +316,7 @@ public class LoginObject
 			stmt.executeUpdate();
 			
 			System.out.println("Prepared Statement Executed");
-			con.close();
-
+			
 		}
 		
 		catch (Exception e)
@@ -353,8 +347,7 @@ public class LoginObject
 			stmt.executeUpdate();
 			
 			System.out.println("Prepared Statement Executed");
-			con.close();
-
+			
 		}
 		
 		catch (Exception e)
