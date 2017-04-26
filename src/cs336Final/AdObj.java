@@ -70,9 +70,7 @@ public class AdObj
 	}
 	
 	public static void addAd(String title)
-	{
-		String q = "INSERT INTO app.Advertisement (Num_Appearances, Ad_Title) VALUES ('0', '"+title+"')";
-		
+	{	
 		try
 		{
 			
@@ -99,7 +97,7 @@ public class AdObj
 			
 		}
 		
-		sql.upd(q);
+		
 		
 	}
 	public static void deleteAd(int id)
