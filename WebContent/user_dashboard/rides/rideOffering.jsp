@@ -25,6 +25,7 @@
   <form method ='post' action = "../carManagement.jsp"><button class="tablinks" >Cars</button></form>
   <form method ='post' action = "../../Login.jsp"><button class="tablinks" style ="float: right;">Logout</button></form>
   <form method ='post' action = "../userLeaderboard.jsp"><button class="tablinks">Leaderboard</button></form>
+  <form method ='post' action = "../messageUser.jsp"><button class="tablinks">Message User</button></form>
 
 </div>
 
@@ -57,13 +58,14 @@ if (arrayrides.size() == 0){
 <% }else{ %>
 	
 	<h3>Results: Choose a ride to request: </h3>
-	
+	<p>To message the driver click message and know their id</p>
 	<table>
 	  <tr>
 	    <th>Lincense</th>
 	    <th>Make</th>
 	    <th>Model</th>
 	    <th>Driver</th>
+	    <th>Driver ID</th>
 	    <th>Start Time</th>
 	    
 	  </tr>
@@ -85,7 +87,17 @@ for ( int i =0; i < arrayrides.size(); i++){
 	    <td style="padding:0 15px 0 15px;" > <%= c.Lincense %></td>
 		<td style="padding:0 15px 0 15px;" > <%= c.Make %></td>
 		<td style="padding:0 15px 0 15px;" > <%= c.Model %></td>
-		<td style="padding:0 15px 0 15px;" > <%= c.user_id %></td>
+		<td style="padding:0 15px 0 15px;" > <%= LoginObject.getUserName(c.user_id) %> 		</td>
+		<td style="padding:0 15px 0 15px;" >  
+		
+			<form method ='post' action = "../messageUser.jsp"><button class="tablinks">Message User </button>
+		
+			<input type = "hidden" name ="To_ID" value = "<%=c.user_id%>"/>
+		
+		
+			</form>
+			
+		</td>
 		<td style="padding:0 15px 0 15px;" > <%=r.start %></td>
 
 		
